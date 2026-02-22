@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CPIT-455 Software Engineering II Portfolio - HIMMA Curriculum">
+    <title>Portfolio | [Your Name] — CPIT-455</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning-bg: #fffbeb;
+            --warning-border: #fcd34d;
+            --warning-text: #92400e;
+            --instructor-bg: #fef3c7;
+            --instructor-border: #fbbf24;
+            --instructor-text: #92400e;
+        }
+        
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        header .tagline {
+            background: var(--accent);
+            color: var(--dark);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+        }
+
+        nav {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent);
+        }
+
+        /* Section Styles */
+        section {
+            background: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--dark);
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        section h3 {
+            color: var(--dark);
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        section h4 {
+            color: var(--secondary);
+            font-size: 1.1em;
+            margin: 15px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        /* Card Styles */
+        .card {
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
+            background: #fafafa;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .badge.success {
+            background: var(--success);
+        }
+
+        /* Photo Section */
+        .photo-section {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-section img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            object-fit: cover;
+            background: #e2e8f0;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .photo-section .photo-placeholder {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px dashed var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: var(--secondary);
+            font-weight: 600;
+            background: #f1f5f9;
+            
+            
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-item {
+            background: var(--dark);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .stat-item span {
+            color: var(--accent);
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        /* Evidence Cards */
+        .evidence-card {
+            border-left: 5px solid var(--primary);
+            background: #f8fafc;
+            margin-bottom: 25px;
+        }
+
+        .evidence-card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .evidence-card .week-badge {
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .evidence-card .topic {
+            color: var(--secondary);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .evidence-card .evidence-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        /* Instructor Only Section */
+        .instructor-only {
+            background: var(--instructor-bg);
+            border: 2px solid var(--instructor-border);
+            color: var(--instructor-text);
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            display: none; /* Students should keep this hidden */
+        }
+
+        .instructor-only strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: var(--warning-bg);
+            border: 2px dashed var(--warning-border);
+            color: var(--warning-text);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn.accent:hover {
+            background: #d97706;
+        }
+
+        .btn.success {
+            background: var(--success);
+        }
+
+        .btn.success:hover {
+            background: #059669;
+        }
+
+        /* Project Section Specific */
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .metric-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-card .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .metric-card h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .metric-card p {
+            font-size: 0.9em;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        /* Reflection Section */
+        .reflection-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .reflection-card h4 {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .reflection-card blockquote {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: var(--dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            background: #334155;
+        }
+
+        .contact-btn.linkedin { background: #0077b5; }
+        .contact-btn.github { background: #333; }
+        .contact-btn.email { background: var(--primary); }
+        .contact-btn.cv { background: var(--success); }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--secondary);
+            border-top: 1px solid #e2e8f0;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer .himma-badge {
+            display: inline-block;
+            background: var(--dark);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Placeholder Text */
+        .placeholder {
+            color: #94a3b8;
+            font-style: italic;
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        /* Privacy Notice */
+        .privacy-notice {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            color: #92400e;
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            section {
+                padding: 25px 20px;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                width: 100%;
+                text-align: center;
+                max-width: 300px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                max-width: 100%;
+            }
+
+            section {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            nav, .btn, .contact-btn {
+                display: none;
+            }
+
+            .instructor-only {
+                display: block !important;
+            }
+        }
+
+        /* digram */
+
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .diagram img {
+            max-width: 80%;
+            height: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER SECTION -->
+    <!-- ============================================ -->
+    <header>
+        <!-- ⚠️ EDIT: Replace with your full name -->
+        <h1>Portfolio | Saeed ALZAHRANI</h1>
+        
+        <p class="subtitle">CPIT-455 Software Engineering II · HIMMA Curriculum</p>
+        
+        <div class="tagline">🔷 BUILD YOUR PROOF</div>
+        
+        <nav>
+            <a href="#about">👤 About</a>
+            <a href="#evidence">📂 Evidence</a>
+            <a href="#project">🚀 Project</a>
+            <a href="#reflection">🧠 Reflection</a>
+            <a href="#contact">🤝 Contact</a>
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- SECTION 01: ABOUT ME -->
+    <!-- ============================================ -->
+    <section id="about">
+        <h2>👤 About Me</h2>
+        
+        <div class="grid">
+            <div>
+                <!-- ⚠️ EDIT: Write your personal bio here -->
+                <p>I am a Information Technology student at <span class="placeholder">King Abdulaziz University</span>, currently enrolled in <strong>CPIT-455 Software Engineering II</strong> under the HIMMA curriculum — a program that moves beyond passive content toward active proof.</p>
+                
+                <p>My goal is to become not just a programmer, but an engineer who understands dependability, safety, reliability, and the human responsibility that comes with building systems others trust.</p>
+                
+                <p>This portfolio represents every week of effort — small proofs that compound into professional-grade evidence of real engineering thinking.</p>
+                
+                <div class="stats-bar">
+                    <div class="stat-item"><span>16</span> Weeks</div>
+                    <div class="stat-item"><span>V2</span> Iteration</div>
+                    <div class="stat-item"><span>3</span> Lectures/Week</div>
+                    <div class="stat-item"><span>1</span> Project</div>
+                </div>
+
+                <h3>🎓 Academic Information</h3>
+                <ul>
+                    <!-- ⚠️ EDIT: Fill in your academic details -->
+                    <li><strong>University:</strong> <span class="placeholder">King Abdulaziz University</span></li>
+                    <li><strong>Major:</strong> <span class="placeholder">Information Technology</span></li>
+                    <li><strong>Year:</strong> <span class="placeholder">2026</span> — Semester <span class="placeholder">2</span></li>
+                    <li><strong>Course:</strong> CPIT-455 Software Engineering II</li>
+                    <li><strong>Domain Focus:</strong> Dependable Systems &amp; Safety-Critical Design</li>
+                </ul>
+            </div>
+
+            <div class="photo-section">
+                <!-- ⚠️ EDIT: Replace src with your photo file path (e.g., "photo.jpg") -->
+                <!-- ⚠️ IMPORTANT: Place your photo in the same folder as this HTML file -->
+                <div class="photo-placeholder">
+                   
+                    <img src="assests\8W6A6928.JPG" alt="student photo">
+                </div>
+                <!-- Uncomment below and add your photo path -->
+                <!-- <img src="your-photo.jpg" alt="Student Photo"> -->
+                
+                <h3>🛠 Technical Skills</h3>
+                <!-- ⚠️ EDIT: List your actual skills -->
+                <div>
+                    <span class="badge">Software Architecture</span>
+                    <span class="badge">Fault Tree Analysis</span>
+                    <span class="badge">Risk Assessment</span>
+                    <span class="badge">ALARP</span>
+                    <span class="badge">Safety Engineering</span>
+                    <span class="badge">Dependability</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">Java</span>
+                    <span class="badge">UML</span>
+                    <span class="badge">V&amp;V</span>
+                    <span class="badge">System Design</span>
+                    <span class="badge accent">Add Your Skills</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 02: WEEKLY EVIDENCE -->
+    <!-- ============================================ -->
+    <section id="evidence">
+        <h2>📂 Weekly Evidence</h2>
+        
+        <p><em>Evidence = Clear Thinking, not perfection. Each week I produce a small proof of learning — a focused answer, a diagram, a test case, or a self-reflection. This is the record.</em></p>
+
+        <div class="privacy-notice">
+            <strong>📌 Privacy Notice:</strong> Do not include sensitive personal information (ID numbers, home addresses, phone numbers) in your evidence. Use your university email for contact.
+        </div>
+
+        <!-- WEEK 01-02 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 01–02</span>
+            <h3>CLASS 00 · The HIMMA System</h3>
+            <p class="topic"><strong>Topics:</strong> Evidence, Portfolio, Iteration, H-Stack Mindset</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your specific evidence for this week -->
+                <p>I initially wrote my work in separate text files, organized by week into different folders. My reflection: I realized that just writing notes wasn’t enough to showcase my learning. Switching to this portfolio template helped me organize my work professionally and present my progress clearly, turning scattered notes into a cohesive record of growth.</p>
+                <!-- <p class="placeholder">"I created my portfolio folder structure and submitted my first goals.txt. My reflection: I realized I was used to studying for grades, not building proof. The HIMMA shift changed how I approach every task."</p> -->
+            </div>
+
+            <!-- ⚠️ DO NOT EDIT: Instructor grading section (keep hidden) -->
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Feedback:</strong> _________________________________
+            </div>
+        </div>
+
+        <!-- WEEK 03-04 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 03–04</span>
+            <h3>CLASS 01 · Domain Spine: Dependability</h3>
+            <p class="topic"><strong>Topics:</strong> 5 Attributes (Availability, Reliability, Safety, Security, Resilience), Sources of Failure</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your specific evidence
+                <p class="placeholder">"I mapped the 5 dependability attributes to a real system."</p> -->
+                 <h3>Delivery App – Dependability Mapping</h3>
+
+    <p>
+        I mapped the five dependability attributes to a real-world delivery application 
+        used by customers, restaurants, and drivers.
+    </p>
+
+    <ul>
+        <li><strong>Availability:</strong> 24/7 service, especially during peak hours.</li>
+        <li><strong>Reliability:</strong> Accurate order processing and payment handling.</li>
+        <li><strong>Safety:</strong> Prevent wrong orders and duplicate charges.</li>
+        <li><strong>Security:</strong> Protect user and payment data using encryption.</li>
+        <li><strong>Resilience:</strong> Handle traffic spikes and recover from failures.</li>
+    </ul>
+
+    <p>
+        Risks include server crashes, database failures, software bugs, and cyberattacks. 
+        To ensure dependability, the system uses cloud hosting, load balancing, backups, 
+        monitoring tools, and secure authentication.
+    </p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+        <!-- WEEK 05-06 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 05–06</span>
+            <h3>CLASS 02 · Reliability Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Fault → Error → Failure, POFOD, ROCOF, AVAIL Metrics, 8 Commandments</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your specific evidence -->
+                <p class="placeholder">"I designed a reliability strategy for a system using ROCOF + Redundant Servers. I justified why ROCOF fits over POFOD or AVAIL."</p>
+
+
+                <h1>Delivery Application Assessment</h1>
+
+<p>The system I am assessing is a delivery application. It is used by customers to order food, by restaurants to receive and prepare orders, and by drivers to deliver them. The system follows an <strong>availability-focused design</strong> because it must provide its services at all times. Since it operates online, users expect it to function 24/7 without interruptions.</p>
+
+<p>The delivery application has a dynamic usage pattern. Traffic typically spikes between 12:00 PM and 3:00 PM during lunchtime, and again between 7:00 PM and 10:00 PM during dinner time. During these peak hours, the system must handle a large number of simultaneous users, orders, and payment transactions. Therefore, <strong>scalability and performance</strong> are very important to maintain smooth operation.</p>
+
+<p>The most critical dependability attribute for this system is <strong>availability</strong>. If the system goes down, customers cannot place orders, restaurants cannot receive requests, and drivers cannot access delivery details. This would result in financial losses, damaged reputation, and customer dissatisfaction. <strong>Reliability</strong> is also important, as orders must not be lost or duplicated, and payments must be processed correctly.</p>
+
+<p>In addition, the system must ensure <strong>security</strong> by protecting user data such as addresses, phone numbers, and payment information. Any data breach could significantly harm user trust. <strong>Maintainability</strong> is also crucial to allow updates and feature additions without disrupting service. Overall, the delivery application must be highly dependable to maintain continuous service, especially during peak demand periods.</p>
+
+<h2>Proposed Strategy – Microservices Architecture</h2>
+<p>To further improve dependability, the system can adopt a <strong>microservices architecture</strong>, where each major component—customer ordering, restaurant management, and driver delivery—is implemented as an independent service. This separation allows each service to <strong>scale, update, and fail independently</strong>, improving availability, maintainability, and performance while ensuring continuous operation even under peak load.</p>
+
+<div class="diagram">
+    <h2>System Microservices Diagram</h2>
+    <img src="assests\task 2 .png" alt="Delivery Application Microservices Diagram">
+</div>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Homework Due:</strong> Week 7
+            </div>
+        </div>
+
+        <!-- WEEK 07-08 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 07–08</span>
+            <h3>CLASS 03 · Safety Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Hazard → Accident → Damage, ALARP Triangle, Fault Tree Analysis, Safety Case</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your specific evidence -->
+                <p class="placeholder">"I built a Fault Tree for a safety-critical scenario, identifying single points of failure. My Safety Case included 3 evidence types."</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Midterm Exam 1:</strong> Week 8 (30%)
+            </div>
+        </div>
+
+        <!-- WEEK 09-10 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 09–10</span>
+            <h3>GROUP PHASE · Security & Resilience + Software Reuse</h3>
+            <p class="topic"><strong>Topics:</strong> Security Engineering, Resilience Patterns, Software Reuse, Component Composition</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your group contribution -->
+                <p class="placeholder">"[Add your reflection on Security/Resilience strategies and Reuse Plan for your project.]"</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+        <!-- WEEK 11-12 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 11–12</span>
+            <h3>GROUP PHASE · Distributed & Component-Based Engineering</h3>
+            <p class="topic"><strong>Topics:</strong> Distributed Systems (Ch.17), Component-Based SE (Ch.16), Architecture Design</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your architecture work -->
+                <p class="placeholder">"[Add your System Architecture Design and Component Diagram evidence.]"</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+            </div>
+        </div>
+
+        <!-- WEEK 13-14 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 13–14</span>
+            <h3>GROUP PHASE · Systems of Systems + Code Coverage</h3>
+            <p class="topic"><strong>Topics:</strong> Systems of Systems (Ch.20), Testing Strategies, Coverage Metrics</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence (V2):</h4>
+                <!-- ⚠️ EDIT: Describe your testing work -->
+                <p class="placeholder">"[Add your Test Cases Implementation and V&V Evidence.]"</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Group Project Due:</strong> Week 15 (20%)
+                <br><strong>Lab Work Grade:</strong> Week 15 (10%)
+            </div>
+        </div>
+
+        <!-- WEEK 15-16 -->
+        <div class="card evidence-card">
+            <span class="week-badge">WEEK 15–16</span>
+            <h3>FINAL HARVEST · The Final Proof</h3>
+            <p class="topic"><strong>Topics:</strong> Final Integration, Portfolio Compilation, Presentation</p>
+            
+            <div class="evidence-box">
+                <h4>My Evidence:</h4>
+                <!-- ⚠️ EDIT: Final reflection -->
+                <p class="placeholder">"[This is your final reflection. What is the most important thing you learned? What changed in how you think about software engineering?]"</p>
+            </div>
+
+            <div class="instructor-only">
+                <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
+                <br><strong>Final Exam:</strong> Week 16 (30%)
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 03: THE PROJECT -->
+    <!-- ============================================ -->
+    <section id="project">
+        <h2>🚀 The Capstone Project</h2>
+
+        <div class="warning-box">
+            <strong>⚠️ IMPORTANT WARNING:</strong>
+            The project example below (ESAAF - Emergency Response System) is a SAMPLE ONLY. 
+            You MUST replace ALL content with your actual group project details. 
+            Do not submit this example as your own work.
+        </div>
+
+        <!-- ⚠️ EDIT: Replace with your actual project information -->
+        <div style="background: #f0f9ff; border: 2px solid #0ea5e9; padding: 25px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="margin-top: 0; color: #0369a1;">[Replace With Your Project Name]</h3>
+            <p><strong>Domain:</strong> <span class="placeholder">[e.g., Medical / Finance / Transportation]</span></p>
+            <p><strong>Team Size:</strong> <span class="placeholder">[X] Members</span></p>
+            
+            <p class="placeholder">[Describe the problem your system solves, who uses it, and why dependability matters for your system. Every design decision should be driven by engineering evidence — not assumptions.]</p>
+        </div>
+
+        <h3>📊 Dependability Metrics</h3>
+        <div class="project-metrics">
+            <div class="metric-card">
+                <div class="icon">⏱</div>
+                <h4>Availability</h4>
+                <!-- ⚠️ EDIT: Your project's availability requirements -->
+                <p class="placeholder">[e.g., 99.9% uptime]</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🛡</div>
+                <h4>Reliability</h4>
+                <!-- ⚠️ EDIT: Your project's reliability metrics -->
+                <p class="placeholder">[e.g., POFOD metric]</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">⚕</div>
+                <h4>Safety</h4>
+                <!-- ⚠️ EDIT: Your project's safety analysis -->
+                <p class="placeholder">[e.g., ALARP applied]</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🔒</div>
+                <h4>Security</h4>
+                <!-- ⚠️ EDIT: Your project's security measures -->
+                <p class="placeholder">[e.g., NCA standards]</p>
+            </div>
+            <div class="metric-card">
+                <div class="icon">🔄</div>
+                <h4>Resilience</h4>
+                <!-- ⚠️ EDIT: Your project's resilience strategy -->
+                <p class="placeholder">[e.g., Recovery time]</p>
+            </div>
+        </div>
+
+        <h3>🏗 Architecture & Engineering</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>🔄 Software Reuse</h4>
+                <!-- ⚠️ EDIT: Describe reused components -->
+                <p class="placeholder">[Describe reused components or libraries used in the project]</p>
+            </div>
+            <div class="card">
+                <h4>🌐 Distributed Architecture</h4>
+                <!-- ⚠️ EDIT: Describe distributed patterns (Chapter 17) -->
+                <p class="placeholder">[Describe distributed architecture patterns used]</p>
+            </div>
+            <div class="card">
+                <h4>🧩 Component-Based</h4>
+                <!-- ⚠️ EDIT: Describe component composition (Chapter 16) -->
+                <p class="placeholder">[Describe component composition approach]</p>
+            </div>
+            <div class="card">
+                <h4>🔗 Systems of Systems</h4>
+                <!-- ⚠️ EDIT: Describe SoS integration (Chapter 20) -->
+                <p class="placeholder">[Describe integration with other systems]</p>
+            </div>
+            <div class="card">
+                <h4>✅ Code Coverage</h4>
+                <!-- ⚠️ EDIT: Describe testing coverage -->
+                <p class="placeholder">[Describe testing strategies and coverage metrics]</p>
+            </div>
+            <div class="card">
+                <h4>🛡 Hazard Analysis</h4>
+                <!-- ⚠️ EDIT: Describe fault tree / hazards -->
+                <p class="placeholder">[Describe Fault Tree and hazards identified]</p>
+            </div>
+        </div>
+
+        <h3>📋 Project Evidence</h3>
+        <ul>
+            <li><strong>Risk Metric:</strong> <span class="placeholder">[e.g., POFOD + Availability %]</span></li>
+            <li><strong>Architecture Pattern:</strong> <span class="placeholder">[e.g., Redundancy + N-Version]</span></li>
+            <li><strong>Safety Standard:</strong> <span class="placeholder">[e.g., ALARP threshold defined]</span></li>
+            <li><strong>V&amp;V Evidence:</strong> <span class="placeholder">[e.g., 400 test cases + Static Analysis]</span></li>
+        </ul>
+
+        <div style="margin-top: 30px;">
+            <!-- ⚠️ EDIT: Add your actual project links -->
+            <a href="#" class="btn">📄 View Full Documentation →</a>
+            <a href="#" class="btn accent">💻 GitHub Repository →</a>
+            <a href="#" class="btn success">▶️ Prototype Demo →</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 04: H-STACK REFLECTION -->
+    <!-- ============================================ -->
+    <section id="reflection">
+        <h2>🧠 H-Stack Reflection</h2>
+        
+        <p><em>This section demonstrates your growth mindset and engineering maturity. Be authentic and specific.</em></p>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 30px;">
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">📈</div>
+                <h4>Market Mindset</h4>
+                <p style="font-size: 0.9em;">Delivery quality · Documentation · Iteration</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">🔍</div>
+                <h4>Evidence-First</h4>
+                <p style="font-size: 0.9em;">From "I know" → "I can prove"</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">📢</div>
+                <h4>Communication</h4>
+                <p style="font-size: 0.9em;">Clarity expected in industry</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div style="font-size: 2em;">⚡</div>
+                <h4>Consistency</h4>
+                <p style="font-size: 0.9em;">Discipline · Commitment to rhythm</p>
+            </div>
+        </div>
+
+        <div class="reflection-card">
+            <h4>❓ What changed in how I think?</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Write your authentic reflection -->
+                <p class="placeholder">"Before HIMMA, I thought software engineering meant writing code. Now I understand it means building evidence — every design decision must be justifiable, traceable, and provable."</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>📈 My biggest V1 → V2 improvement</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Describe specific feedback and improvement -->
+                <p class="placeholder">"In my first submission on dependability, I listed the 5 attributes as definitions. After feedback, my V2 applied them to a real system and showed how they interact — that's the difference."</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>⚖️ Safety vs Reliability — My understanding</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Show technical understanding -->
+                <p class="placeholder">"A system can perfectly follow its specification and still cause harm. Safety is freedom from harm, Reliability is conformance to spec. A reliable weapon is still dangerous — that insight changed everything."</p>
+            </blockquote>
+        </div>
+
+        <div class="reflection-card">
+            <h4>💼 What I will carry into my career</h4>
+            <blockquote>
+                <!-- ⚠️ EDIT: Write your career insight -->
+                <p class="placeholder">"The burden of proof is on the engineer. In safety engineering, you are guilty until proven innocent. I will never ship a critical system without a Safety Case — and I now know how to build one."</p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 05: CONTACT -->
+    <!-- ============================================ -->
+    <section id="contact">
+        <h2>🤝 Let's Connect</h2>
+        
+        <p>Build Your Network. Build Your Future.</p>
+
+        <div class="privacy-notice">
+            <strong>🔒 Privacy Reminder:</strong> Use professional contact methods only. Do not share personal phone numbers or home addresses.
+        </div>
+
+        <div class="contact-grid">
+            <!-- ⚠️ EDIT: Add your actual links -->
+            <a href="https://www.linkedin.com/in/saeed-alzahrani-b7918b264/" class="contact-btn linkedin" target="_blank">
+                💼 LinkedIn
+            </a>
+            <a href="mailto:salzahrani1538@stu.kau.edu.sa" class="contact-btn email">
+                ✉️ Email
+            </a>
+            <a href="https://github.com/KMAMH" class="contact-btn github" target="_blank">
+                💻 GitHub
+            </a>
+            <a href="#" class="contact-btn cv">
+                📄 Download CV
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="#" class="btn">View Full LinkedIn Profile →</a>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer>
+        <div class="himma-badge">HIMMA | BUILD YOUR PROOF</div>
+        
+        <!-- ⚠️ EDIT: Update with your name and date -->
+        <p>© 2025 — <span class="placeholder">[Your Name]</span> · CPIT-455 Portfolio</p>
+        <p>Faculty of Computing and Information Technology</p>
+        <p>Last Updated: <span class="placeholder">[Month Year]</span> — Version 2.0</p>
+        
+        <div style="margin-top: 20px; font-size: 0.85em; color: #94a3b8;">
+            <p>📚 Textbook: Ian Sommerville, "Software Engineering", 10th Edition (2015)</p>
+            <p>🏛 Department of Information Technology · Fall 2024</p>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- STUDENT INSTRUCTIONS (Hidden in browser) -->
+    <!-- ============================================ -->
+    <!-- 
+    ╔════════════════════════════════════════════════════════════════╗
+    ║                    STUDENT CHECKLIST                           ║
+    ╠════════════════════════════════════════════════════════════════╣
+    ║  ✅ Replace ALL [placeholder] text with your information       ║
+    ║  ✅ Add your photo (200x200px) in the same folder              ║
+    ║  ✅ Update all links (LinkedIn, GitHub, Project)               ║
+    ║  ✅ Remove the ESAAF example and add YOUR project              ║
+    ║  ✅ Fill in ALL weekly evidence sections                       ║
+    ║  ✅ Write authentic reflections (not copied examples)          ║
+    ║  ✅ Keep instructor-only sections HIDDEN (display: none)       ║
+    ║  ✅ Test all links before submission                           ║
+    ║  ✅ Save as: Portfolio_YourName.html                           ║
+    ║  ✅ Submit by the deadline                                     ║
+    ╚════════════════════════════════════════════════════════════════╝
+    -->
+
+</body>
+</html>
