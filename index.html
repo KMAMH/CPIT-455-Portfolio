@@ -713,7 +713,7 @@
             <div class="evidence-box">
                 <h4>My Evidence (V2):</h4>
                 <!-- ⚠️ EDIT: Describe your specific evidence -->
-                <p class="placeholder">"I designed a reliability strategy for a system using ROCOF + Redundant Servers. I justified why ROCOF fits over POFOD or AVAIL."</p>
+                <!-- <p class="placeholder">"I designed a reliability strategy for a system using ROCOF + Redundant Servers. I justified why ROCOF fits over POFOD or AVAIL."</p> -->
 
 
                 <h1>Delivery Application Assessment</h1>
@@ -750,8 +750,58 @@
             <div class="evidence-box">
                 <h4>My Evidence (V2):</h4>
                 <!-- ⚠️ EDIT: Describe your specific evidence -->
-                <p class="placeholder">"I built a Fault Tree for a safety-critical scenario, identifying single points of failure. My Safety Case included 3 evidence types."</p>
+                <!-- <p class="placeholder">"I built a Fault Tree for a safety-critical scenario, identifying single points of failure. My Safety Case included 3 evidence types."</p> -->
+                
+                <ol>
+                    <li><h5>Hazard → Accident → Damage (The Chain)</h4>
+                        <ul>
+                            <li>Hazard: A database sync error occurs between the app and the restaurant, causing an "Allergy: Peanuts" tag to be dropped from an order.</li>
+                            <li>Accident: The kitchen prepares the meal with peanut oil, and the customer consumes it.</li>
+                            <li>Damage: The customer suffers a severe allergic reaction (Anaphylaxis), leading to potential hospitalization or death.</li>
+                            <li>Intervention: You break this chain by implementing a Protection System that cross-checks the order JSON against the user's saved health profile before the "Submit" button is even enabled.</li>
+                        </ul>
+                    </li>
+                       
+                    <br>
+                        <br>
+                    <li>
+                        <h5>The ALARP Triangle</h5>
+                        <p>Since absolute safety is often impossible, you must balance risk against the cost and difficulty of reducing it.</p>
+                        <ul>
+                            <li>Intolerable Risk: An unauthorized user gaining access to the delivery rider’s real-time home address. This must be designed out of the system entirely.</li>
+                            <li>ALARP (As Low As Reasonably Practicable): The risk of a rider’s phone battery dying mid-delivery. You tolerate this risk because it is impractical to prevent entirely, but you reduce it by having the app send a low-battery alert to the server to reassign the order if necessary.</li>
+                            <li>Acceptable Risk: A customer receiving a slightly cold meal due to traffic. The risk is negligible to physical safety and is tolerated by society.</li>
+                        </ul>
+                        <div class="diagram">
+                            <h2>The ALARP Triangle digram </h2>
+                      <img src="assests\triangelPM.png" alt="The ALARP Triangle"  style="width: 400px; height: auto;">
+     
+                        </div>
+
+                    </li>
+
+<br>
+<br>
+                    <li>
+                        <h5>Fault Tree Analysis (Deductive)</h5>
+                        <p>Fault Tree Analysis is a top-down deductive technique used to identify the root causes of a system failure.</p>
+                        <ul>
+                            <li>Top Event: This is the primary hazard you are trying to prevent, such as "User receives incorrect medication/special dietary meal".</li>
+                            <li>OR Gate (Single Point of Failure): An OR gate represents a single point of failure where any one cause can trigger the hazard. In your app, the hazard occurs if the restaurant’s tablet fails OR the driver picks up the wrong bag.</li>
+                            <li>AND Gate (Redundancy): An AND gate is used to design redundancy into the system. To prevent an "Incorrect Calculation" of fees, both the primary algorithm AND the secondary verification monitor must fail simultaneously for the error to reach the user.</li>
+                        </ul>
+                          <div class="diagram">
+                            <h2>The ALARP Triangle digram </h2>
+                      <img src="assests\faulttree ana.png" alt="The ALARP Triangle"  style="width: 400px; height: auto;">
+     
+                        </div>
+
+                    </li>
+                </ol>
+
             </div>
+
+            
 
             <div class="instructor-only">
                 <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
