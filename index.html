@@ -97,6 +97,144 @@
             border-color: var(--accent);
         }
 
+        /* Swiss Cheese Model */
+        .swiss-cheese-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 30px 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        .cheese-layer {
+            position: relative;
+            width: 120px;
+            min-width: 100px;
+            height: 180px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-align: center;
+            padding: 8px;
+            color: white;
+            box-shadow: 3px 0 8px rgba(0,0,0,0.15);
+        }
+        .cheese-layer::before,
+        .cheese-layer::after {
+            content: '';
+            position: absolute;
+            background: rgba(255,255,255,0.35);
+            border-radius: 50%;
+        }
+        .cheese-layer::before { width: 30px; height: 30px; top: 20px; left: 15px; }
+        .cheese-layer::after  { width: 20px; height: 20px; bottom: 30px; right: 20px; }
+        .layer-technical { background: #2563eb; }
+        .layer-human     { background: #7c3aed; }
+        .layer-org       { background: #059669; }
+        .cheese-arrow {
+            font-size: 1.8em;
+            color: var(--danger);
+            font-weight: bold;
+            padding: 0 5px;
+            flex-shrink: 0;
+        }
+        .cheese-threat {
+            background: var(--danger);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-align: center;
+            min-width: 80px;
+        }
+        .cheese-safe {
+            background: var(--success);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        /* R&R Table */
+        .rr-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        .rr-table th {
+            background: var(--dark);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        .rr-table td {
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        .rr-table tr:nth-child(even) td { background: #f8fafc; }
+        .rr-table .tag-r { background: #dbeafe; color: #1d4ed8; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em; }
+        .rr-table .tag-s { background: #dcfce7; color: #166534; padding: 3px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em; }
+
+        /* Reuse Architecture */
+        .reuse-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .reuse-core {
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 20px;
+            background: #eff6ff;
+        }
+        .reuse-specialized {
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            background: #fffbeb;
+        }
+        .reuse-core h4    { color: var(--primary); margin-top: 0; }
+        .reuse-specialized h4 { color: #b45309; margin-top: 0; }
+        .chain-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fef2f2;
+            border: 2px solid var(--danger);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        .chain-step {
+            background: var(--danger);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: center;
+            flex: 1;
+        }
+        .chain-arrow { color: var(--danger); font-size: 1.3em; font-weight: bold; flex-shrink: 0; }
+        @media (max-width: 768px) {
+            .reuse-grid { grid-template-columns: 1fr; }
+            .swiss-cheese-container { flex-wrap: wrap; gap: 10px; }
+            .chain-box { flex-direction: column; }
+        }
+
         /* Section Styles */
         section {
             background: white;
@@ -548,6 +686,36 @@
             padding: 10px;
             background-color: #fff;
         }
+
+        /* CBSE Architecture Diagram */
+        pre.arch-diagram {
+            background: #1e293b;
+            color: #e2e8f0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.76em;
+            line-height: 1.55;
+            padding: 22px 26px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            white-space: pre;
+        }
+
+        /* Code / command blocks */
+        pre.code-block {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 3px solid var(--primary);
+            color: #334155;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.82em;
+            line-height: 1.6;
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            overflow-x: auto;
+            margin: 12px 0;
+            white-space: pre;
+        }
     </style>
 </head>
 <body>
@@ -566,6 +734,11 @@
         <nav>
             <a href="#about">👤 About</a>
             <a href="#evidence">📂 Evidence</a>
+            <a href="#resilience">🛡 Resilience</a>
+            <a href="#reuse">♻ Reuse</a>
+            <a href="#cbse">🧩 CBSE</a>
+            <a href="#distributed">🌐 Distributed</a>
+            <a href="#testing">🧪 Testing</a>
             <a href="#project">🚀 Project</a>
             <a href="#reflection">🧠 Reflection</a>
             <a href="#contact">🤝 Contact</a>
@@ -812,13 +985,38 @@
         <!-- WEEK 09-10 -->
         <div class="card evidence-card">
             <span class="week-badge">WEEK 09–10</span>
-            <h3>GROUP PHASE · Security & Resilience + Software Reuse</h3>
-            <p class="topic"><strong>Topics:</strong> Security Engineering, Resilience Patterns, Software Reuse, Component Composition</p>
-            
+            <h3>Resilience Engineering &amp; Software Reuse</h3>
+            <p class="topic"><strong>Topics:</strong> Fault–Error–Failure Chain, R&amp;R Strategies, Swiss Cheese Model, Reuse Landscape, Product Line Architecture, Ariane 5 Lesson</p>
+
             <div class="evidence-box">
-                <h4>My Evidence (V2):</h4>
-                <!-- ⚠️ EDIT: Describe your group contribution -->
-                <p class="placeholder">"[Add your reflection on Security/Resilience strategies and Reuse Plan for your project.]"</p>
+                <h4>My Evidence (V2) — Summary:</h4>
+
+                <p>
+                    This week I evolved the food delivery application from "reliable" to <strong>resilient</strong>, then grounded
+                    its development in strategic <strong>software reuse</strong>. The two assignments are intentionally linked:
+                    the reuse components I selected (proven SDKs, cloud-native frameworks) directly support the resilience
+                    layers I designed — not as an afterthought, but as engineered defence-in-depth.
+                </p>
+
+                <h4>Assignment 6 — Key Insights:</h4>
+                <ul>
+                    <li>Traced a <strong>race condition fault</strong> in the order-service through its error and visible failure path (wrong meal delivered to allergic customer).</li>
+                    <li>Designed a <strong>Recognition</strong> technique (real-time state-consistency monitor) and a <strong>Resistance</strong> strategy (optimistic locking + fallback queue).</li>
+                    <li>Applied the <strong>Swiss Cheese Model</strong> across three defensive layers: Technical, Human, and Organizational — ensuring no single-layer hole can propagate to catastrophe.</li>
+                </ul>
+
+                <h4>Assignment 7 — Key Insights:</h4>
+                <ul>
+                    <li>Positioned the system in the <strong>Application Frameworks</strong> quadrant of the Reuse Landscape, justified by team skills and tight schedule.</li>
+                    <li>Separated <strong>Core Components</strong> (Auth, Payments, Maps, Push Notifications) from <strong>Specialized Components</strong> (Order workflow, Allergy filter, Driver algorithm).</li>
+                    <li>Applied the <strong>Ariane 5 Lesson</strong>: enforced fixed-point decimal for all monetary values to prevent silent floating-point overflow.</li>
+                </ul>
+
+                <p style="margin-top:15px;">
+                    Full technical breakdown in the
+                    <a href="#resilience" style="color: var(--primary); font-weight:bold;">Resilience Case</a> and
+                    <a href="#reuse"       style="color: var(--primary); font-weight:bold;">Reuse Strategy</a> sections below.
+                </p>
             </div>
 
             <div class="instructor-only">
@@ -829,13 +1027,34 @@
         <!-- WEEK 11-12 -->
         <div class="card evidence-card">
             <span class="week-badge">WEEK 11–12</span>
-            <h3>GROUP PHASE · Distributed & Component-Based Engineering</h3>
+            <h3>GROUP PHASE · Distributed &amp; Component-Based Engineering</h3>
             <p class="topic"><strong>Topics:</strong> Distributed Systems (Ch.17), Component-Based SE (Ch.16), Architecture Design</p>
-            
+
             <div class="evidence-box">
-                <h4>My Evidence (V2):</h4>
-                <!-- ⚠️ EDIT: Describe your architecture work -->
-                <p class="placeholder">"[Add your System Architecture Design and Component Diagram evidence.]"</p>
+                <h4>My Evidence (V2) — Ch.16 &amp; Ch.17 Summary:</h4>
+
+                <p><strong>Ch.16 — Component-Based SE:</strong> I applied CBSE theory to TANDIB, demonstrating how the entire system is built by composing <strong>ten off-the-shelf components</strong> rather than implementing infrastructure from scratch.</p>
+                <ul>
+                    <li>Positioned TANDIB under <strong>Development with Reuse</strong> and justified it through three planning factors: budget, schedule, and market availability.</li>
+                    <li>Built a full <strong>Requires/Provides interface diagram</strong> across the mobile app, backend, and database layers.</li>
+                    <li>Designed an <strong>Integration Testing Plan</strong> targeting each interface boundary (Mobile ↔ API, Filament ↔ Policies, Eloquent ↔ Supabase).</li>
+                    <li>Identified and mitigated the primary CBSE risk: <strong>silent version mismatch</strong> across independently-maintained Expo packages.</li>
+                </ul>
+
+                <p style="margin-top: 10px;"><strong>Ch.17 — Distributed Systems:</strong> I mapped TANDIB across five independent nodes and designed a distributed architecture with defined failover for each failure scenario.</p>
+                <ul>
+                    <li>Selected <strong>Multi-Tier Client-Server</strong> as the model and ruled out P2P and microservices with justification via four system requirements.</li>
+                    <li>Built a <strong>full node map</strong> covering mobile devices, the Laravel server, Supabase, Expo Push Gateway, and EAS — each with defined responsibility boundaries.</li>
+                    <li>Designed <strong>four failover scenarios</strong> (server down, database outage, mobile offline, OTA failure) with specific blast-radius and recovery paths for each.</li>
+                    <li>Specified <strong>TLS 1.3 across all inter-node channels</strong> and mapped three cloud/SaaS services to their industry alignment rationale.</li>
+                </ul>
+
+                <p style="margin-top: 15px;">
+                    Full technical breakdown in the
+                    <a href="#cbse" style="color: var(--primary); font-weight: bold;">CBSE Strategy (Ch.16)</a> and
+                    <a href="#distributed" style="color: var(--primary); font-weight: bold;">Distributed Architecture (Ch.17)</a>
+                    sections below.
+                </p>
             </div>
 
             <div class="instructor-only">
@@ -850,9 +1069,21 @@
             <p class="topic"><strong>Topics:</strong> Systems of Systems (Ch.20), Testing Strategies, Coverage Metrics</p>
             
             <div class="evidence-box">
-                <h4>My Evidence (V2):</h4>
-                <!-- ⚠️ EDIT: Describe your testing work -->
-                <p class="placeholder">"[Add your Test Cases Implementation and V&V Evidence.]"</p>
+                <h4>My Evidence (V2) — Testing Strategy Summary:</h4>
+                <p>
+                    For this phase I designed and documented a complete quality pipeline for TANDIB covering both the
+                    Laravel backend and the React Native mobile app, from static analysis through to coverage gating.
+                </p>
+                <ul>
+                    <li>Applied the <strong>Testing Pyramid</strong> across two stacks — PHPUnit + Jest for tests, ESLint/TypeScript and Pint/Larastan for static analysis before any test runs.</li>
+                    <li>Mapped <strong>four unit-testable business logic functions</strong> (Haversine, isCancellable, promo calculation, operating hours) and documented the corresponding test file structure.</li>
+                    <li>Analyzed <strong>existing feature tests</strong> in <code>tests/Feature/</code> and proposed five new test classes targeting auth, geo-fencing, promo codes, role isolation, and notification dispatch.</li>
+                    <li>Defined <strong>coverage targets by layer</strong> (90%+ business logic, 80%+ controllers, 70%+ middleware) and explained why coverage is a floor, not a ceiling.</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    Full technical breakdown in the
+                    <a href="#testing" style="color: var(--primary); font-weight: bold;">Testing Strategy</a> section below.
+                </p>
             </div>
 
             <div class="instructor-only">
@@ -869,15 +1100,1356 @@
             <p class="topic"><strong>Topics:</strong> Final Integration, Portfolio Compilation, Presentation</p>
             
             <div class="evidence-box">
-                <h4>My Evidence:</h4>
-                <!-- ⚠️ EDIT: Final reflection -->
-                <p class="placeholder">"[This is your final reflection. What is the most important thing you learned? What changed in how you think about software engineering?]"</p>
+                <h4>My Evidence — Final Proof:</h4>
+                <p>
+                    TANDIB is a food delivery platform built by one developer in one semester. This portfolio is
+                    the record of every engineering decision made along the way — not polished after the fact, but
+                    produced week by week as the system was built. Each section below represents a real problem
+                    encountered, a technique applied, and a proof left behind.
+                </p>
+
+                <table class="rr-table" style="margin: 18px 0;">
+                    <thead>
+                        <tr><th>Phase</th><th>The Proof Produced</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Weeks 01–02</strong> · HIMMA</td>
+                            <td>Shifted from passive notes to an evidence-first portfolio — the format itself is the proof of the mindset change</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weeks 03–04</strong> · Dependability</td>
+                            <td>Mapped all five attributes (Availability, Reliability, Safety, Security, Resilience) to a live food delivery system with concrete failure examples</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weeks 05–06</strong> · Reliability</td>
+                            <td>Justified a microservices architecture using AVAIL/ROCOF metrics; identified peak-hour failure modes and proposed independent scaling per service</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weeks 07–08</strong> · Safety</td>
+                            <td>Built a complete Hazard → Accident → Damage chain for an allergy scenario, applied ALARP across three risk levels, and produced a Fault Tree for the order system</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weeks 09–10</strong> · Resilience &amp; Reuse</td>
+                            <td>Designed a three-layer Swiss Cheese model around a real race condition in <code>AutoAcceptOrderJob.php</code>; enforced the Ariane 5 commandment on all monetary fields</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weeks 11–12</strong> · CBSE &amp; Distributed</td>
+                            <td>Mapped ten off-the-shelf components with explicit Requires/Provides contracts; distributed the runtime across five independent nodes with TLS 1.3 on every channel</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weeks 13–14</strong> · Testing</td>
+                            <td>Designed a full quality pipeline — static analysis, unit tests, feature tests, and a coverage gate — across both the Laravel backend and React Native mobile app</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <blockquote style="border-left: 3px solid var(--accent); padding: 12px 16px; background: #fffbeb; border-radius: 0 6px 6px 0; font-style: italic; color: var(--secondary); margin: 12px 0;">
+                    <strong style="display:block; color: var(--dark); font-style: normal; margin-bottom: 6px;">What changed in how I think?</strong>
+                    Before this course I wrote code. Now I produce proof. Every decision in TANDIB — the DB lock, the version pinning, the coverage target — traces back to a failure mode I studied and chose to design around. The code is the outcome; the reasoning is the work.
+                </blockquote>
+
+                <blockquote style="border-left: 3px solid var(--danger); padding: 12px 16px; background: #fef2f2; border-radius: 0 6px 6px 0; font-style: italic; color: var(--secondary); margin: 12px 0;">
+                    <strong style="display:block; color: var(--dark); font-style: normal; margin-bottom: 6px;">What is TANDIB's single biggest risk, and why is it now handled?</strong>
+                    The race condition in <code>AutoAcceptOrderJob</code> — a customer cancels an order and the restaurant still receives a "confirmed" push and begins cooking. It is handled because three independent layers now cover it: a <code>lockForUpdate()</code> transaction prevents the state conflict, a FIFO queue prevents ordering violations, and a Telescope watcher catches anything that slips through before the push is dispatched.
+                </blockquote>
+
+                <blockquote style="border-left: 3px solid var(--primary); padding: 12px 16px; background: #eff6ff; border-radius: 0 6px 6px 0; font-style: italic; color: var(--secondary); margin: 12px 0;">
+                    <strong style="display:block; color: var(--dark); font-style: normal; margin-bottom: 6px;">What I will carry into my career?</strong>
+                    The burden of proof sits with the engineer. A system can be fully reliable — conforming to its specification perfectly — and still cause harm. I will not ship a safety-relevant system without a Safety Case, and I will not accept a green test suite that only asserts status codes rather than state.
+                </blockquote>
+
+                <p style="margin-top: 18px; font-weight: 600; color: var(--dark);">
+                    This portfolio is the proof.
+                </p>
             </div>
 
             <div class="instructor-only">
                 <strong>📝 Instructor Score:</strong> [Leave Blank — For Instructor Use Only]
                 <br><strong>Final Exam:</strong> Week 16 (30%)
             </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 03A: RESILIENCE CASE (Assignment 6) -->
+    <!-- ============================================ -->
+    <section id="resilience">
+        <h2>🛡 Resilience Case</h2>
+        <p><em>Assignment 6 — Evolving TANDIB from reliable to resilient by designing for real failure modes found in the actual codebase.</em></p>
+
+        <!-- ─── 1. FAULT → ERROR → FAILURE CHAIN ─── -->
+        <h3>1. Failure Chain Analysis</h3>
+        <p>
+            The fault was found in a real file: <strong>AutoAcceptOrderJob.php</strong>.
+            TANDIB fires this job 10 seconds after a customer places an order (when the restaurant has auto-accept enabled).
+            The job checks the order status without a database lock, while <strong>OrderController::cancel()</strong>
+            writes to the same record without guarding against the concurrent job.
+        </p>
+
+        <div class="chain-box">
+            <div class="chain-step">FAULT<br><small style="font-weight:normal;">AutoAcceptOrderJob reads<br>order status without<br>lockForUpdate()</small></div>
+            <span class="chain-arrow">→</span>
+            <div class="chain-step">ERROR<br><small style="font-weight:normal;">Cancel and auto-accept<br>both pass the status check<br>and write simultaneously</small></div>
+            <span class="chain-arrow">→</span>
+            <div class="chain-step">FAILURE<br><small style="font-weight:normal;">Cancelled order becomes<br>"confirmed" — restaurant<br>prepares a ghost order</small></div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h4 style="color:var(--danger);">Fault (Static Defect)</h4>
+                <p>
+                    In <code>AutoAcceptOrderJob::handle()</code>, the guard:
+                    <br><code>if ($order->status !== STATUS_PENDING) return;</code>
+                    <br>runs without a transaction lock. The wallet top-up in <code>OrderController::store()</code>
+                    correctly uses <code>lockForUpdate()</code>, but the order status transition does not — an
+                    inconsistency in the same codebase.
+                </p>
+            </div>
+            <div class="card">
+                <h4 style="color:var(--warning-text);">Error (Incorrect Internal State)</h4>
+                <p>
+                    Both the cancel request and the job read <code>status = pending</code> at the same millisecond.
+                    The cancel writes <code>cancelled</code>; the job then overwrites it with <code>confirmed</code>
+                    (or vice versa). The order record now holds a status that contradicts the customer's action.
+                </p>
+            </div>
+            <div class="card">
+                <h4 style="color:var(--danger);">Failure (Visible Deviation)</h4>
+                <p>
+                    The customer sees "Order Cancelled" in the app. The restaurant receives an Expo push notification
+                    saying "New Order Confirmed" and begins preparation. A real meal is made and a driver is assigned
+                    for an order the customer already cancelled — causing financial loss and driver-wasted trips.
+                </p>
+            </div>
+        </div>
+
+        <!-- ─── 2. R&R TABLE ─── -->
+        <h3>2. Recognition &amp; Resistance (R&amp;R) Strategies</h3>
+        <table class="rr-table">
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Strategy Name</th>
+                    <th>How It Works in TANDIB (specific to actual code)</th>
+                    <th>Threat Addressed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="tag-r">Recognition</span></td>
+                    <td><strong>Laravel Telescope Anomaly Alert</strong></td>
+                    <td>
+                        TANDIB already has Laravel Telescope installed (migration: <code>create_telescope_entries_table</code>).
+                        A custom Telescope watcher monitors for impossible order status transitions
+                        (e.g., <code>cancelled → confirmed</code>). When detected, it logs a tagged entry
+                        and triggers a Filament admin dashboard notification before the restaurant receives the push.
+                    </td>
+                    <td>Detects the race condition error in the DB before the Expo push notification is dispatched to the restaurant</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-r">Recognition</span></td>
+                    <td><strong>Expo Push Delivery Receipt Audit</strong></td>
+                    <td>
+                        TANDIB's <code>ExpoPushService</code> sends notifications fire-and-forget.
+                        Adding receipt polling (Expo's <code>/push/getReceipts</code> endpoint) detects
+                        when a "confirmed" push was delivered to the restaurant <em>after</em> the order was
+                        already cancelled — surfacing the inconsistency to the ops team.
+                    </td>
+                    <td>Catches the failure even when it slips past the DB layer, before the restaurant acts on the incorrect notification</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-s">Resistance</span></td>
+                    <td><strong>DB Transaction Lock in AutoAcceptOrderJob</strong></td>
+                    <td>
+                        Wrap the status check in <code>AutoAcceptOrderJob::handle()</code> inside a
+                        <code>DB::transaction()</code> with <code>lockForUpdate()</code> — matching the pattern
+                        already used in <code>OrderController::store()</code> for the wallet balance.
+                        This guarantees that cancel and auto-accept cannot both see <code>pending</code> at once.
+                    </td>
+                    <td>Eliminates the race condition at the source — the fault can no longer produce an error state</td>
+                </tr>
+                <tr>
+                    <td><span class="tag-s">Resistance</span></td>
+                    <td><strong>Laravel Queue with FIFO Ordering</strong></td>
+                    <td>
+                        TANDIB already uses Laravel's queue system (<code>AutoAcceptOrderJob implements ShouldQueue</code>,
+                        and the <code>create_jobs_table</code> migration exists). Configuring the queue driver to process
+                        order-state jobs in strict FIFO order ensures that a cancel job dispatched before the
+                        10-second auto-accept fires will always be processed first, even under worker load.
+                    </td>
+                    <td>Maintains critical service delivery (no ghost orders) even during queue worker backpressure at peak hours</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ─── 3. SWISS CHEESE MODEL ─── -->
+        <h3>3. Swiss Cheese Model — Defensive Layers</h3>
+        <p>
+            Each layer has holes (no single layer is perfect). The design goal is to ensure
+            <strong>holes never align</strong> — a threat that passes one layer is caught by the next.
+        </p>
+
+        <div class="swiss-cheese-container">
+            <div class="cheese-threat">THREAT<br><small>Race condition<br>ghost order</small></div>
+            <span class="cheese-arrow">→</span>
+
+            <div class="cheese-layer layer-technical">
+                <strong>Technical</strong><br>
+                <small style="opacity:0.9;">
+                    lockForUpdate()<br>
+                    DB::transaction()<br>
+                    FIFO Job Queue<br>
+                    Telescope Watcher
+                </small>
+                <div style="position:absolute; top:12px; right:18px; width:25px; height:25px; background:rgba(255,255,255,0.4); border-radius:50%;"></div>
+            </div>
+            <span class="cheese-arrow">→</span>
+
+            <div class="cheese-layer layer-human">
+                <strong>Human</strong><br>
+                <small style="opacity:0.9;">
+                    Filament Admin<br>
+                    Panel Alert<br>
+                    Push Receipt<br>
+                    Audit Review
+                </small>
+                <div style="position:absolute; bottom:18px; left:12px; width:22px; height:22px; background:rgba(255,255,255,0.4); border-radius:50%;"></div>
+            </div>
+            <span class="cheese-arrow">→</span>
+
+            <div class="cheese-layer layer-org">
+                <strong>Organizational</strong><br>
+                <small style="opacity:0.9;">
+                    Railway Deploy<br>
+                    Freeze Policy<br>
+                    Post-Mortem<br>
+                    Complaint System
+                </small>
+            </div>
+            <span class="cheese-arrow">→</span>
+            <div class="cheese-safe">SAFE<br><small>Threat<br>contained</small></div>
+        </div>
+
+        <div class="grid" style="margin-top:20px;">
+            <div class="card">
+                <h4 style="color:var(--primary);">Technical Layer</h4>
+                <ul>
+                    <li><strong>lockForUpdate() in AutoAcceptOrderJob:</strong> prevents concurrent status reads</li>
+                    <li><strong>DB::transaction() wrapper:</strong> already used for wallet — extend to order status</li>
+                    <li><strong>FIFO Laravel Queue:</strong> ensures cancel jobs are processed before auto-accept jobs</li>
+                    <li><strong>Laravel Telescope:</strong> already installed — add status-transition anomaly watcher</li>
+                </ul>
+                <p><em>Hole:</em> A DB deadlock under extreme load could cause both the cancel and the lock to time out — both fail silently.</p>
+            </div>
+            <div class="card">
+                <h4 style="color:#7c3aed;">Human Layer</h4>
+                <ul>
+                    <li><strong>Filament Admin Dashboard:</strong> already built — add ghost-order alert widget</li>
+                    <li><strong>Expo Push Receipt Audit:</strong> a team member reviews delivery receipts for mismatch patterns daily</li>
+                    <li><strong>Complaint System:</strong> the <code>Complaint</code> model and <code>ComplaintController</code> already exist — customer reports feed directly into the ops team</li>
+                </ul>
+                <p><em>Hole:</em> Human review is reactive — the restaurant may already have started cooking before a human sees the flag.</p>
+            </div>
+            <div class="card">
+                <h4 style="color:var(--success);">Organizational Layer</h4>
+                <ul>
+                    <li><strong>Railway Deployment Policy:</strong> the <code>Procfile</code> and <code>railway.json</code> enforce controlled deployments — no hot-patching of queue workers during peak hours (12–2 PM, 7–10 PM)</li>
+                    <li><strong>Blameless Post-Mortem:</strong> every ghost-order incident triggers a root-cause review before the next feature is shipped</li>
+                    <li><strong>Restaurant SLA Agreement:</strong> restaurants are briefed that a "confirmed" push must be cross-checked against the in-app order panel before kitchen preparation begins</li>
+                </ul>
+                <p><em>Hole:</em> Restaurant staff may not follow the SLA brief under high order volume — human compliance degrades under pressure.</p>
+            </div>
+        </div>
+
+        <!-- ─── 4. HUMAN-IN-THE-LOOP ─── -->
+        <h3>4. The Sociotechnical Factor — Human-in-the-Loop</h3>
+        <div class="card" style="border-left: 5px solid var(--accent);">
+            <h4>When Automated Resilience Reaches Its Limit</h4>
+            <p>
+                The DB lock and FIFO queue handle the race condition automatically. But if the queue worker itself
+                crashes mid-job (e.g., Railway restarts the container during peak load), the auto-accept job may
+                be lost entirely — leaving the order stuck in <code>pending</code> with no driver assigned and no
+                customer notification.
+            </p>
+            <p>At this point, the <strong>Filament admin panel</strong> (already built into TANDIB) is the human interface:</p>
+            <ul>
+                <li>The admin sees orders stuck in <code>pending</code> beyond the expected 30-second window via a stale-order widget.</li>
+                <li>They manually trigger the order status update via the Filament resource panel (<code>MenuController::updateOrderStatus()</code> is already accessible).</li>
+                <li>They use the <strong>Complaint System</strong> (<code>AdminComplaintController::reply()</code>) to contact the affected customer with a compensation credit to their wallet.</li>
+                <li>They escalate to Railway support if the container restart pattern indicates an infrastructure fault rather than a code fault.</li>
+            </ul>
+            <p>
+                The human expert is not a fallback of last resort — they are a designed layer in the Swiss Cheese model,
+                operating on tools that were built into TANDIB from the start.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 03B: REUSE STRATEGY (Assignment 7)  -->
+    <!-- ============================================ -->
+    <section id="reuse">
+        <h2>♻ Reuse Strategy</h2>
+        <p>
+            <em>Assignment 7 — How TANDIB was built by strategically reusing proven components, and how those
+            reuse decisions directly reinforce the resilience goals from Assignment 6.</em>
+        </p>
+
+        <!-- ─── 1. POSITION IN REUSE LANDSCAPE ─── -->
+        <h3>1. Position in the Reuse Landscape</h3>
+        <div class="card" style="border-left: 5px solid var(--primary);">
+            <h4>Chosen Approach: Application Frameworks + COTS Service Integration</h4>
+            <p>
+                TANDIB is built on the <strong>Application Frameworks</strong> reuse strategy.
+                The entire backend is a Laravel application — a full-stack PHP framework that provides routing,
+                ORM (Eloquent), authentication scaffolding, job queues, and testing infrastructure out of the box.
+                On top of it, three COTS (Commercial Off-The-Shelf) services are integrated: Stripe for payments,
+                Expo for push notifications, and Railway for deployment.
+            </p>
+            <h4>Justification via Planning Factors:</h4>
+            <table class="rr-table">
+                <thead>
+                    <tr><th>Planning Factor</th><th>TANDIB's Context</th><th>Why Application Framework Reuse Fits</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Development Schedule</strong></td>
+                        <td>Semester project — the entire system (backend + mobile) built by a small team in one semester</td>
+                        <td>Laravel's built-in auth, migrations, and job queue meant the team never wrote a login system, queue broker, or DB schema manager from scratch. Expo + React Native gave them a cross-platform mobile app without native iOS/Android expertise.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Team Skills</strong></td>
+                        <td>Team has PHP/web background; mobile is secondary</td>
+                        <td>Laravel is the most documented PHP framework. Expo abstracts native mobile APIs behind JavaScript — the team could build <code>DeliveryController</code> (driver GPS tracking) without writing a single line of Swift or Kotlin.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Software Criticality</strong></td>
+                        <td>Payment processing is financially critical; push notifications are operationally critical (restaurant must know instantly about new orders)</td>
+                        <td>Reusing Stripe (PCI-DSS certified) and Expo (battle-tested at scale) is demonstrably safer than writing custom payment or notification systems. The team cannot replicate the validation those services have accumulated.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── 2. PRODUCT LINE ARCHITECTURE ─── -->
+        <h3>2. Product Line Architecture (SPL)</h3>
+        <div class="reuse-grid">
+            <div class="reuse-core">
+                <h4>Core Components (Generic — Reused Unchanged)</h4>
+                <p>These are proven building blocks used as-is. TANDIB's team did not modify their internals.</p>
+                <ul>
+                    <li><strong>Laravel Framework</strong> — Provides routing (<code>api.php</code>), Eloquent ORM (all 20+ Models), Sanctum auth (<code>auth:sanctum</code> middleware), queue system (<code>ShouldQueue</code> in <code>AutoAcceptOrderJob</code>), and migrations.</li>
+                    <li><strong>Laravel Sanctum</strong> — Bearer-token authentication. Every protected route in <code>api.php</code> uses <code>middleware('auth:sanctum')</code> with zero custom auth code.</li>
+                    <li><strong>Stripe PHP SDK</strong> — <code>\Stripe\Checkout\Session</code> handles card payment initiation and verification in <code>PaymentController</code>. PCI-DSS compliance is inherited, not built.</li>
+                    <li><strong>Expo Push Notifications</strong> — <code>ExpoPushService</code> wraps Expo's HTTP API. The <code>ExpoPushToken</code> model stores device tokens; the service sends typed notifications (new order, status update) to customers and restaurant managers.</li>
+                    <li><strong>Laravel Telescope</strong> — Installed for monitoring (migration: <code>create_telescope_entries_table</code>). Logs every API request, queue job, and database query in development and staging.</li>
+                    <li><strong>Filament Admin Panel</strong> — Full admin interface built from the <code>app/Filament/</code> directory. Used for managing restaurant applications, complaints, and order oversight without writing custom HTML.</li>
+                    <li><strong>Railway</strong> — Cloud deployment platform (configured via <code>Procfile</code> and <code>railway.json</code>). Handles container builds, environment variables, and automatic restarts.</li>
+                </ul>
+            </div>
+            <div class="reuse-specialized">
+                <h4>Specialized Components (Built on Core — Configured for TANDIB)</h4>
+                <p>These are TANDIB-specific. They extend the core framework to serve the food-delivery domain.</p>
+                <ul>
+                    <li><strong>Order State Machine</strong> — 10 statuses (<code>pending → confirmed → accepted → preparing → ready → picked_up → on_the_way → arrived → delivered / cancelled / rejected</code>) defined in <code>Order.php</code> as constants. The transition logic is spread across <code>OrderController</code>, <code>MenuController</code>, and <code>AutoAcceptOrderJob</code>.</li>
+                    <li><strong>AutoAcceptOrderJob</strong> — A custom queue job that auto-advances a pending order to confirmed 10 seconds after placement if the restaurant has opted in. This is the job where the Fault from Assignment 6 was identified.</li>
+                    <li><strong>Haversine Delivery Zone Calculator</strong> — Custom geographic fee engine in <code>OrderController::haversineMeters()</code> and <code>PaymentController::haversineMeters()</code>. Calculates distance between restaurant GPS and customer GPS to determine which <code>DeliveryZone</code> fee applies.</li>
+                    <li><strong>Wallet System</strong> — <code>WalletTransaction</code> model, wallet balance on <code>User</code>, and wallet deduction logic inside the checkout transaction. Uses <code>lockForUpdate()</code> to prevent double-spend — the resilience pattern that should be extended to order status (Assignment 6 fix).</li>
+                    <li><strong>Promo Code Engine</strong> — <code>PromoCode</code> model with <code>isValid()</code> and <code>calculateDiscount()</code> business logic, validated and applied during checkout in <code>OrderController::store()</code>.</li>
+                    <li><strong>Complaint &amp; Admin Reply System</strong> — <code>ComplaintController</code> for customers to file complaints; <code>AdminComplaintController</code> for the ops team to respond. Part of the Human Layer in the Swiss Cheese model.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ─── 3. VALIDATION & ARIANE 5 LESSON ─── -->
+        <h3>3. Validation &amp; "The Ariane 5 Lesson"</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>Thorough Validation Plan for Reused Components</h4>
+                <ul>
+                    <li><strong>Stripe Test Mode:</strong> All payment flows in TANDIB are tested against Stripe's sandbox environment (not mocked). This matches the Ariane 5 lesson — the reused component must be validated in the <em>actual operational context</em>, not a simulated one.</li>
+                    <li><strong>Laravel PHPUnit Integration Tests:</strong> The <code>phpunit.xml</code> is already configured. Tests exercise the full HTTP stack (real DB, real queue worker) — not unit tests that mock Eloquent. If a migration changes a column, the test breaks immediately.</li>
+                    <li><strong>Boundary Value Tests for Payment Amounts:</strong> Checkout is tested at SAR 0.01 (minimum), SAR 0.00 (wallet-covered), and amounts that produce floating-point edge cases (e.g., SAR 29.99 × 100 = 2998.9999...).</li>
+                    <li><strong>Expo Push Receipt Polling:</strong> After sending notifications, a scheduled job checks Expo's receipt endpoint to confirm delivery — validating that the reused push service behaved as expected in production.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>Reliable Programming Commandment (Ariane 5 Applied to TANDIB)</h4>
+                <p>
+                    The Ariane 5 rocket failed because a 64-bit float was reused from Ariane 4 in a context that
+                    produced a value too large for the 16-bit integer it was converted into — a silent overflow,
+                    never tested in the new operational envelope.
+                </p>
+                <p><strong>The same risk exists in TANDIB today.</strong> In <code>Order.php</code>:</p>
+                <blockquote style="border-left: 3px solid var(--danger); padding: 10px 15px; background: #fef2f2; border-radius: 0 6px 6px 0; font-size:0.9em;">
+                    <code>'subtotal' => 'float', 'total_price' => 'float'</code><br>
+                    All monetary fields are cast to PHP <code>float</code> (IEEE 754 double-precision).
+                    The conversion <code>(int) round($remainingTotal * 100)</code> in <code>PaymentController</code>
+                    is a bandage — it masks the precision loss rather than eliminating it.
+                </blockquote>
+                <p><strong>Commandment enforced going forward:</strong></p>
+                <blockquote style="border-left: 3px solid var(--success); padding: 10px 15px; background: #f0fdf4; border-radius: 0 6px 6px 0; font-style:italic;">
+                    "All monetary values in TANDIB MUST be stored as integers (halalas: 1 SAR = 100 halalas)
+                    in the database and in all PHP calculations. Convert to SAR decimal only at the API response
+                    layer. PHP's <code>float</code> type is forbidden in any class that touches order totals or
+                    payment amounts."
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- ─── 4. INDUSTRY ALIGNMENT ─── -->
+        <h3>4. Industry Alignment</h3>
+        <div class="card" style="border-left: 5px solid var(--success);">
+            <h4>Industry Trend: Cloud-Native Deployment (Railway + Laravel Horizon)</h4>
+            <p>
+                TANDIB's reuse strategy directly leverages the <strong>Cloud Computing</strong> trend.
+                Railway (configured via <code>railway.json</code> and <code>Procfile</code>) provides:
+            </p>
+            <div class="grid" style="margin-top:15px;">
+                <div>
+                    <h4>How Cloud-Native Supports Isolation (Resilience Link):</h4>
+                    <ul>
+                        <li><strong>Automatic Container Restarts:</strong> If the PHP-FPM process serving the API crashes, Railway restarts it within seconds — directly supporting the Availability attribute from Week 03–04.</li>
+                        <li><strong>Environment Variable Isolation:</strong> Stripe keys, DB credentials, and Expo tokens are injected at runtime — never in source code. A compromised key can be rotated without a redeployment.</li>
+                        <li><strong>Queue Worker as Separate Process:</strong> The <code>Procfile</code> can run the queue worker (<code>php artisan queue:work</code>) as an independent worker process — meaning a job failure (<code>AutoAcceptOrderJob</code>) cannot crash the API server handling customer requests.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>How Cloud-Native Supports Recovery (Resilience Link):</h4>
+                    <ul>
+                        <li><strong>Zero-Downtime Deployments:</strong> Railway's rolling restart means a code fix for the <code>AutoAcceptOrderJob</code> lock issue (Assignment 6) can be deployed without taking the API offline.</li>
+                        <li><strong>Laravel Horizon (next step):</strong> Adding Horizon (Redis-backed queue dashboard) to the Railway deployment would give real-time visibility into queue worker health — a direct upgrade to the Technical Layer of the Swiss Cheese model.</li>
+                        <li><strong>Database Backups via Railway:</strong> Automated MySQL backups ensure that even if a corrupt order write reaches the DB (Assignment 6 failure scenario), a point-in-time restore is available.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── PORTFOLIO BRIDGE ─── -->
+        <h3>Portfolio Bridge — How Reuse Supports Resilience in TANDIB</h3>
+        <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #93c5fd;">
+            <p>The two assignments are not separate — they are two views of the same engineering decision:</p>
+            <ul>
+                <li>
+                    The <strong>lockForUpdate() fix</strong> (Resistance strategy, Asgn. 6) is possible because
+                    TANDIB reused <strong>Laravel's DB facade and transaction API</strong> (Asgn. 7). The pattern
+                    is already proven in the wallet deduction code — reuse made the fix a one-line extension,
+                    not a redesign.
+                </li>
+                <li>
+                    The <strong>FIFO queue fix</strong> (Resistance, Asgn. 6) relies on <strong>Laravel's ShouldQueue
+                    interface</strong> — a core reused component (Asgn. 7). Without the queue framework,
+                    <code>AutoAcceptOrderJob</code> would not exist, and the race condition would manifest
+                    as a synchronous deadlock instead.
+                </li>
+                <li>
+                    The <strong>Ariane 5 Commandment</strong> (Asgn. 7) directly prevents an escalation of the
+                    Fault chain (Asgn. 6): a floating-point mismatch between <code>calculateTotal()</code>
+                    (PaymentController) and the Stripe verification amount (OrderController) could cause a valid
+                    payment to be rejected, triggering a ghost order through a different path.
+                </li>
+                <li>
+                    The <strong>Railway cloud deployment</strong> (Asgn. 7) is what makes the Organizational Layer
+                    of the Swiss Cheese model (Asgn. 6) enforceable — change-freeze policies have teeth only when
+                    deployments are controlled through a single platform with a deployment history.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION: CBSE STRATEGY (Ch.16)              -->
+    <!-- ============================================ -->
+    <section id="cbse">
+        <h2>🧩 CBSE Strategy</h2>
+        <p><em>Ch.16 — TANDIB built entirely through Development with Reuse: ten off-the-shelf components composed into a working food-delivery platform, with explicit Requires/Provides interface contracts and a measured integration risk strategy.</em></p>
+
+        <!-- ─── 1. POSITIONING ─── -->
+        <h3>1. Positioning TANDIB in CBSE</h3>
+        <div class="card" style="border-left: 5px solid var(--primary);">
+            <h4>Selected Approach: Development with Reuse</h4>
+            <p>
+                TANDIB is built almost entirely by composing off-the-shelf components rather than building functionality
+                from scratch. This is <strong>Development with Reuse</strong> — the system architect's job is to
+                identify, select, adapt, and integrate existing components rather than design new ones. The alternative,
+                <em>Development for Reuse</em> (building generalized components intended for others to reuse later),
+                is inappropriate for a startup-stage MVP where the priority is a working product, not a component library.
+            </p>
+            <h4>Justification via Planning Factors:</h4>
+            <table class="rr-table">
+                <thead>
+                    <tr><th>Planning Factor</th><th>How It Favored Development with Reuse</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Budget</strong></td>
+                        <td>A single-developer MVP cannot afford to implement an authentication system, admin dashboard, push notification pipeline, or map SDK from scratch. Each of these exists as a production-grade off-the-shelf component.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Development Schedule</strong></td>
+                        <td>TANDIB had to reach a demonstrable state within an academic semester. Composing Expo + Laravel + Supabase compressed what would be 6+ months of infrastructure work into integration configuration.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Market Availability</strong></td>
+                        <td>Every critical capability TANDIB needs has a mature, well-documented open-source or managed component available — auth (Sanctum), admin UI (Filament), database (Supabase), maps (React Native Maps), notifications (Expo Notifications). The market is saturated with high-quality reusable components for this problem domain.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── 2. COMPONENT COMPOSITION ─── -->
+        <h3>2. Component Composition</h3>
+        <h4>Independent Components</h4>
+        <table class="rr-table">
+            <thead>
+                <tr><th>Component</th><th>Type</th><th>Role in TANDIB</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Laravel 12</strong></td>
+                    <td>Open-source framework</td>
+                    <td>HTTP routing, middleware pipeline, Eloquent ORM, request lifecycle</td>
+                </tr>
+                <tr>
+                    <td><strong>Laravel Sanctum</strong></td>
+                    <td>Open-source package</td>
+                    <td>API token issuance, bearer token authentication</td>
+                </tr>
+                <tr>
+                    <td><strong>Filament 5</strong></td>
+                    <td>Open-source admin framework</td>
+                    <td>Role-scoped admin/owner dashboard with auto-generated CRUD UI</td>
+                </tr>
+                <tr>
+                    <td><strong>Supabase (PostgreSQL)</strong></td>
+                    <td>Managed BaaS</td>
+                    <td>Persistent relational data store — 27 tables, UUID keys</td>
+                </tr>
+                <tr>
+                    <td><strong>Expo 54 / React Native</strong></td>
+                    <td>Open-source framework</td>
+                    <td>Cross-platform mobile app runtime and build system</td>
+                </tr>
+                <tr>
+                    <td><strong>Expo Router</strong></td>
+                    <td>Open-source package</td>
+                    <td>File-based screen navigation for the mobile app</td>
+                </tr>
+                <tr>
+                    <td><strong>Expo SecureStore</strong></td>
+                    <td>Open-source package</td>
+                    <td>Encrypted token storage on the device</td>
+                </tr>
+                <tr>
+                    <td><strong>Expo Notifications</strong></td>
+                    <td>Open-source package</td>
+                    <td>Push notification delivery to customer and owner devices</td>
+                </tr>
+                <tr>
+                    <td><strong>React Native Maps</strong></td>
+                    <td>Open-source package</td>
+                    <td>Map rendering, delivery zone visualization</td>
+                </tr>
+                <tr>
+                    <td><strong>Zustand 5</strong></td>
+                    <td>Open-source library</td>
+                    <td>Client-side cart state management</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4 style="margin-top: 25px;">Interface Design (Requires / Provides)</h4>
+        <p>The diagram below shows how each component exposes what it provides and what it requires from others:</p>
+        <pre class="arch-diagram">
+┌─────────────────────────────────────────────────────────────────┐
+│                      MOBILE APP (Expo 54)                       │
+│                                                                 │
+│  ┌──────────────┐   ┌────────────────┐   ┌──────────────────┐  │
+│  │  Expo Router │   │    Zustand 5   │   │  Expo SecureStore│  │
+│  │              │   │                │   │                  │  │
+│  │ PROVIDES:    │   │ PROVIDES:      │   │ PROVIDES:        │  │
+│  │ - Screen nav │   │ - Cart state   │   │ - Token read/    │  │
+│  │ - Deep links │   │ - add/remove   │   │   write          │  │
+│  │              │   │   item actions │   │                  │  │
+│  │ REQUIRES:    │   │                │   │ REQUIRES:        │  │
+│  │ - Auth state │   │ REQUIRES:      │   │ - Device OS      │  │
+│  │   (token)    │   │ - Menu item    │   │   keychain       │  │
+│  └──────┬───────┘   │   data (API)  │   └────────┬─────────┘  │
+│         │           └───────┬────────┘            │            │
+│         │                   │         ┌───────────▼──────────┐ │
+│  ┌──────▼───────────────────▼──┐      │  Expo Notifications  │ │
+│  │     api.ts (API Service)    │      │                      │ │
+│  │                             │      │ PROVIDES:            │ │
+│  │ PROVIDES: typed fetch calls │      │ - Push alerts to UI  │ │
+│  │ REQUIRES: bearer token,     │      │                      │ │
+│  │           API base URL      │      │ REQUIRES:            │ │
+│  └──────────────┬──────────────┘      │ - Device push token  │ │
+│                 │                     │ - Notification payload│ │
+│  ┌──────────────▼──────────┐          └──────────────────────┘ │
+│  │    React Native Maps    │                                    │
+│  │ PROVIDES: map render,   │                                    │
+│  │           marker pins   │                                    │
+│  │ REQUIRES: lat/lng coords│                                    │
+│  │           from API      │                                    │
+│  └─────────────────────────┘                                   │
+└───────────────────────┬─────────────────────────────────────────┘
+                        │  HTTPS REST  (bearer token header)
+                        │
+┌───────────────────────▼─────────────────────────────────────────┐
+│                   BACKEND (Laravel 12)                          │
+│                                                                 │
+│  ┌──────────────────┐        ┌──────────────────────────────┐   │
+│  │  Laravel Sanctum │        │        Filament 5            │   │
+│  │                  │        │                              │   │
+│  │ PROVIDES:        │        │ PROVIDES:                    │   │
+│  │ - Token issuance │        │ - Admin/owner web dashboard  │   │
+│  │ - Token validate │        │ - Auto CRUD UI per resource  │   │
+│  │   middleware     │        │ - Role-scoped data views     │   │
+│  │                  │        │                              │   │
+│  │ REQUIRES:        │        │ REQUIRES:                    │   │
+│  │ - users table    │        │ - Eloquent models            │   │
+│  │ - personal_      │        │ - Sanctum session auth       │   │
+│  │   access_tokens  │        │ - Policy classes             │   │
+│  └──────┬───────────┘        └────────────────┬─────────────┘   │
+│         │                                     │                  │
+│  ┌──────▼─────────────────────────────────────▼──────────────┐  │
+│  │              Laravel 12 Core (Eloquent ORM)               │  │
+│  │  PROVIDES: model queries, relationships, migrations       │  │
+│  │  REQUIRES: database connection (DSN → Supabase)          │  │
+│  └──────────────────────────────┬────────────────────────────┘  │
+└─────────────────────────────────┼──────────────────────────────┘
+                                  │  PostgreSQL wire protocol
+                                  │
+                   ┌──────────────▼──────────────┐
+                   │       Supabase (PostgreSQL)  │
+                   │                             │
+                   │ PROVIDES:                   │
+                   │ - Persistent data storage   │
+                   │ - Connection pooling        │
+                   │ - Point-in-time recovery    │
+                   │                             │
+                   │ REQUIRES:                   │
+                   │ - Valid schema migrations   │
+                   │ - Authenticated DSN         │
+                   └─────────────────────────────┘</pre>
+
+        <div class="card" style="border-left: 5px solid var(--primary); margin-top: 20px;">
+            <h4>Key Interface Contracts</h4>
+            <ul>
+                <li>
+                    <strong>Mobile → Backend:</strong> Every API call in <code>mobile/services/api.ts</code> sends an
+                    <code>Authorization: Bearer &lt;token&gt;</code> header. Laravel Sanctum's middleware validates
+                    this token before the request reaches any controller. This is a strict Requires/Provides contract:
+                    the mobile component requires a valid token, Sanctum provides the validation.
+                </li>
+                <li>
+                    <strong>Filament → Eloquent:</strong> Filament 5 requires Eloquent model classes with defined
+                    <code>$fillable</code> fields and Policy classes for access control. The models provide query
+                    builders and relationship resolution that Filament renders as table rows and form fields.
+                </li>
+                <li>
+                    <strong>Backend → Supabase:</strong> Laravel's Eloquent ORM requires a <code>DATABASE_URL</code>
+                    environment variable pointing to Supabase's connection pooler. Supabase provides a standard
+                    PostgreSQL wire-protocol interface — no Supabase SDK is needed; it behaves as a plain
+                    PostgreSQL instance.
+                </li>
+            </ul>
+        </div>
+
+        <!-- ─── 3. VALIDATION & RISK ─── -->
+        <h3>3. Validation &amp; Risk Measurement</h3>
+        <h4>Integration Testing Plan</h4>
+        <p>
+            Component-level unit tests are insufficient for CBSE — what matters is that the interfaces between
+            components behave correctly under real conditions. TANDIB's integration testing plan targets each
+            interface boundary:
+        </p>
+        <table class="rr-table">
+            <thead>
+                <tr><th>Interface Boundary</th><th>Test Approach</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mobile ↔ Laravel API</strong></td>
+                    <td>Postman/HTTP test collection runs against the live local backend. Every endpoint is tested with valid tokens, expired tokens, and missing tokens to verify Sanctum's middleware rejects at the correct boundary.</td>
+                </tr>
+                <tr>
+                    <td><strong>Sanctum ↔ Users Table</strong></td>
+                    <td>Laravel Feature tests (PHPUnit) create a real database user, issue a token, and assert authenticated routes return 200 while unauthenticated routes return 401 — no mocking.</td>
+                </tr>
+                <tr>
+                    <td><strong>Filament ↔ Policy Classes</strong></td>
+                    <td>Automated browser tests (or manual walkthroughs) confirm that a <code>restaurant_owner</code> session cannot navigate to admin-only Filament resources, even via a direct URL.</td>
+                </tr>
+                <tr>
+                    <td><strong>Eloquent ↔ Supabase</strong></td>
+                    <td>Migration rollup tests run <code>php artisan migrate:fresh</code> against a staging Supabase project to confirm all 27 tables are created correctly with all constraints intact.</td>
+                </tr>
+                <tr>
+                    <td><strong>Expo Notifications ↔ Device</strong></td>
+                    <td>End-to-end test: trigger an order status change via the API and confirm the push notification appears on a physical device within an acceptable latency window.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="grid" style="margin-top: 20px;">
+            <div class="card" style="border-left: 5px solid var(--danger);">
+                <h4 style="color: var(--danger);">Identified Risk: Silent Version Mismatch</h4>
+                <p>
+                    React Native Maps, Expo Router, and Expo Notifications are each maintained by separate teams on
+                    independent release cycles. A patch update to one package can silently break its interface with
+                    another — for example, an Expo SDK 54→55 upgrade may change the push token format that
+                    Expo Notifications provides, while the backend's <code>NotificationController</code> was written
+                    expecting the SDK 54 format. The app continues to compile and launch, but push notifications
+                    silently stop delivering.
+                </p>
+                <p>
+                    <strong>This is the most dangerous class of CBSE failure: no crash, no error log, just silent
+                    loss of functionality.</strong>
+                </p>
+            </div>
+            <div class="card" style="border-left: 5px solid var(--success);">
+                <h4 style="color: var(--success);">Mitigation Plan</h4>
+                <ul>
+                    <li><strong>Exact version pinning</strong> in <code>package.json</code> — no caret (<code>^</code>) or tilde (<code>~</code>) ranges for Expo ecosystem packages. Upgrades are explicit, deliberate decisions.</li>
+                    <li><strong>Expo's official compatibility matrix</strong> is consulted before any SDK upgrade to confirm which versions of each native package are compatible.</li>
+                    <li><strong>Staged upgrade policy:</strong> any dependency upgrade is first applied to a feature branch and the full integration test suite — including a live push notification delivery test — must pass before merging.</li>
+                    <li><strong>Mandatory changelog review</strong> for any package touching the Requires/Provides interface boundary (Sanctum, Expo Notifications, Supabase client library).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ─── 4. INDUSTRY ALIGNMENT ─── -->
+        <h3>4. Industry Alignment</h3>
+        <div class="card" style="border-left: 5px solid var(--success);">
+            <h4>Trend: Composable Architecture (API-First Design)</h4>
+            <p>
+                TANDIB's CBSE strategy aligns directly with the <strong>Composable Architecture</strong> trend that
+                has become the standard for modern platform engineering. The principle is that every capability is
+                exposed through a well-defined API interface — making components independently deployable,
+                replaceable, and testable.
+            </p>
+            <p>
+                In TANDIB this is realized concretely: the mobile app, the Filament admin panel, and any future web
+                frontend all consume the same Laravel REST API. No component has privileged direct access to the
+                database — all interaction goes through the API interface layer. This means:
+            </p>
+            <div class="grid" style="margin-top: 15px;">
+                <div>
+                    <ul>
+                        <li><strong>Efficiency:</strong> A new client (e.g., a restaurant tablet app) can be added by building a new consumer of the existing API — no backend changes required.</li>
+                        <li><strong>Replaceability:</strong> If Supabase were replaced with a self-hosted PostgreSQL instance, only the DSN connection string changes. Eloquent's interface to the rest of the system remains identical.</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><strong>Isolation:</strong> When the mobile app is updated, the backend components are unaffected because the API contract is the stable boundary between them.</li>
+                        <li><strong>This composable, API-first design is what makes CBSE practically achievable at TANDIB's scale</strong> — each component can evolve independently as long as it honors its interface contract.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ─── CLOSING ─── -->
+        <h3>How CBSE Supports Efficiency Goals</h3>
+        <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #93c5fd;">
+            <p>
+                Every off-the-shelf component integrated into TANDIB represents a category of engineering work that
+                was not performed from scratch — authentication logic, admin UI generation, encrypted storage, push
+                notification delivery, and geographic map rendering. The team's actual effort was spent on the
+                business logic unique to food delivery: order workflows, promo code validation, geo-fenced restaurant
+                discovery, and role-scoped data access.
+            </p>
+            <p>
+                <strong>CBSE made that focus possible by making the infrastructure a composition problem rather than
+                an implementation problem.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION: DISTRIBUTED ARCHITECTURE (Ch.17)   -->
+    <!-- ============================================ -->
+    <section id="distributed">
+        <h2>🌐 Distributed Architecture</h2>
+        <p><em>Ch.17 — TANDIB's runtime is distributed across five independent nodes. The architecture ensures no single failure brings down the platform, every inter-node channel is encrypted with TLS 1.3, and three managed cloud services absorb infrastructure complexity so the team can focus on business logic.</em></p>
+
+        <!-- ─── 1. POSITIONING ─── -->
+        <h3>1. Positioning TANDIB in the Distributed Landscape</h3>
+        <div class="card" style="border-left: 5px solid var(--primary);">
+            <h4>Selected Model: Multi-Tier Client-Server Architecture</h4>
+            <p>
+                TANDIB is a classic three-tier client-server system, distributed across geographically separated
+                nodes: mobile client devices, a cloud-hosted application server, and a managed database service.
+                This is the correct model because TANDIB's core requirement is <strong>resource sharing with
+                centralized authority</strong> — all users (customers, restaurant owners, admins) must read and
+                write a shared, consistent dataset.
+            </p>
+            <p>
+                Peer-to-peer is ruled out because the data must be authoritative and consistent across all clients.
+                A pure distributed component architecture (microservices) is ruled out because the team size and
+                scale do not justify that operational complexity at this stage.
+            </p>
+            <h4>Justification Based on System Requirements:</h4>
+            <table class="rr-table">
+                <thead>
+                    <tr><th>Requirement</th><th>Why Client-Server Fits</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Shared data consistency</strong></td>
+                        <td>All users read from and write to the same PostgreSQL database. The centralized server enforces business rules (promo validation, geo-fencing, order state machine) before any write reaches the database.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Peak load handling</strong></td>
+                        <td>The application server tier is the only layer that needs to scale horizontally. The database (Supabase) and mobile clients are independently managed — scaling the API layer does not require touching either.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Multiple client types</strong></td>
+                        <td>The same Laravel API serves mobile customers, mobile restaurant owners, and the Filament web admin panel. A single server interface handles all client types without client-side coordination.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security boundary</strong></td>
+                        <td>Centralizing business logic in the server tier means no client device ever has direct database access. All data passes through Laravel's authentication and authorization middleware.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ─── 2. NODE DISTRIBUTION ─── -->
+        <h3>2. Defining the Distributed Architecture</h3>
+        <h4>Node Distribution</h4>
+        <p>TANDIB's runtime is distributed across five distinct node types, each with a defined responsibility boundary:</p>
+        <pre class="arch-diagram">
+┌──────────────────────────────────────────────────────────────────────┐
+│                        NODE MAP – TANDIB                             │
+│                                                                      │
+│  ┌─────────────────────────────────────────────────────────────┐     │
+│  │              NODE 1: USER MOBILE DEVICES                    │     │
+│  │         (iOS / Android — distributed globally)              │     │
+│  │                                                             │     │
+│  │  Software: Expo 54 / React Native app (built by EAS)        │     │
+│  │  Responsibility: UI rendering, cart state (Zustand),        │     │
+│  │                  local token storage (SecureStore)          │     │
+│  │  Communication: HTTPS REST → Node 2                         │     │
+│  └──────────────────────┬──────────────────────────────────────┘     │
+│                         │  HTTPS (TLS 1.3)                           │
+│                         │  Bearer Token in Authorization header       │
+│                         ▼                                            │
+│  ┌──────────────────────────────────────────────────────────────┐    │
+│  │            NODE 2: LARAVEL APPLICATION SERVER                │    │
+│  │               (Cloud-hosted — single region)                 │    │
+│  │                                                             │    │
+│  │  Software: Laravel 12 + Filament 5 + Sanctum                │    │
+│  │  Responsibility: API routing, auth middleware, business      │    │
+│  │                  logic, ORM queries, Filament admin UI       │    │
+│  │  Communication: PostgreSQL wire protocol (TLS) → Node 3     │    │
+│  │                 HTTP → Node 4 (push notifications)          │    │
+│  └───────┬──────────────────────────────┬───────────────────────┘   │
+│          │  PostgreSQL/TLS              │  HTTPS (Firebase FCM /    │
+│          │                             │  Expo Push API)            │
+│          ▼                             ▼                            │
+│  ┌───────────────────┐     ┌────────────────────────────────────┐   │
+│  │  NODE 3: SUPABASE │     │  NODE 4: EXPO PUSH GATEWAY         │   │
+│  │  (Managed PgSQL)  │     │  (Expo's SaaS notification relay)  │   │
+│  │                   │     │                                    │   │
+│  │  27 tables, UUID  │     │  Routes push alerts to iOS         │   │
+│  │  primary keys,    │     │  (APNs) and Android (FCM)          │   │
+│  │  check constraints│     │  without TANDIB managing           │   │
+│  │  geo data         │     │  platform push infrastructure      │   │
+│  └───────────────────┘     └───────────────┬────────────────────┘   │
+│                                            │                        │
+│                                            ▼                        │
+│  ┌──────────────────────────────────────────────────────────────┐   │
+│  │           NODE 5: EAS (Expo Application Services)           │   │
+│  │               (SaaS Build & Distribution)                    │   │
+│  │                                                             │   │
+│  │  Responsibility: Compiles the React Native app for iOS/      │   │
+│  │                  Android, submits to App Store / Play Store, │   │
+│  │                  delivers OTA (Over-The-Air) JS bundle       │   │
+│  │                  updates to live devices without a full      │   │
+│  │                  app store release cycle                     │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+└──────────────────────────────────────────────────────────────────────┘</pre>
+
+        <h4 style="margin-top: 25px;">Data Transfer with Low Latency</h4>
+        <table class="rr-table">
+            <thead>
+                <tr><th>Transfer Path</th><th>Protocol</th><th>Latency Strategy</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Mobile → Laravel API</strong></td>
+                    <td>HTTPS REST over TLS 1.3</td>
+                    <td>Responses are JSON-only. Heavy list endpoints (restaurant search) use eager loading (<code>with()</code>) to eliminate N+1 queries.</td>
+                </tr>
+                <tr>
+                    <td><strong>Laravel → Supabase</strong></td>
+                    <td>PostgreSQL wire protocol over TLS</td>
+                    <td>Laravel is deployed in the same cloud region as the Supabase project. Co-location eliminates cross-continent database round trips — the most common source of API latency.</td>
+                </tr>
+                <tr>
+                    <td><strong>Laravel → Expo Push Gateway</strong></td>
+                    <td>HTTPS to Expo's push API</td>
+                    <td>Notifications are dispatched asynchronously (queued job) so the API response to the mobile client is never blocked waiting for a push delivery confirmation.</td>
+                </tr>
+                <tr>
+                    <td><strong>EAS → Mobile Devices (OTA)</strong></td>
+                    <td>HTTPS CDN delivery</td>
+                    <td>EAS serves JS bundle updates from a CDN edge network. Devices check for updates at app launch and apply them in the background — the user sees the update on next restart with zero manual action.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ─── 3. RELIABILITY & SECURITY ─── -->
+        <h3>3. Reliability &amp; Security</h3>
+        <h4>Failover Plan</h4>
+        <p>
+            TANDIB's distributed design isolates failures so no single node failure crashes the entire platform.
+            Each scenario below maps a node failure to its exact blast radius and recovery path:
+        </p>
+        <div class="grid">
+            <div class="card" style="border-left: 5px solid var(--danger);">
+                <h4 style="color: var(--danger);">Scenario 1 — Application Server Down</h4>
+                <ul>
+                    <li>Mobile app receives a network timeout or 5xx response — displays a user-friendly offline error screen instead of crashing.</li>
+                    <li>Filament admin panel becomes inaccessible, but it is an internal tool and does not affect active customer sessions.</li>
+                    <li><strong>Recovery:</strong> The cloud host detects the unhealthy instance and restarts it automatically — typically within 60–90 seconds. Supabase data is completely unaffected.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-left: 5px solid var(--danger);">
+                <h4 style="color: var(--danger);">Scenario 2 — Supabase (Database) Outage</h4>
+                <ul>
+                    <li>Laravel returns 500 errors for any request requiring a database read or write.</li>
+                    <li>Mobile app receives structured error responses and shows a service-unavailable message.</li>
+                    <li><strong>Recovery:</strong> Supabase provides automatic point-in-time recovery — once restored, the database state is consistent to within seconds of the outage. Nodes 4 and 5 continue independently.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-left: 5px solid var(--warning-border);">
+                <h4 style="color: var(--warning-text);">Scenario 3 — Mobile Device Loses Connectivity</h4>
+                <ul>
+                    <li>Zustand cart state persists in memory for the session duration — items in the cart are not lost during a momentary network drop.</li>
+                    <li>API calls are retried with exponential backoff before surfacing an error to the user.</li>
+                    <li>The app degrades gracefully to a read-only offline state until connectivity is restored — no crash.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-left: 5px solid var(--success);">
+                <h4 style="color: var(--success);">Scenario 4 — EAS / OTA Update Fails</h4>
+                <ul>
+                    <li>The app continues running the previously installed bundle.</li>
+                    <li>EAS updates are additive and non-blocking — if an update cannot be fetched, the existing working version runs.</li>
+                    <li>No user-visible disruption. The next successful check delivers the pending update silently.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card" style="border-left: 5px solid var(--primary); margin-top: 20px;">
+            <h4>Security Protocol: TLS 1.3 Across All Inter-Node Communication</h4>
+            <p>Every data transfer path in TANDIB is encrypted in transit using TLS 1.3:</p>
+            <ul>
+                <li>
+                    <strong>Mobile → Laravel:</strong> HTTPS enforced at the cloud host level. HTTP requests are
+                    redirected to HTTPS. The mobile app's API base URL is <code>https://</code> — no plaintext fallback.
+                </li>
+                <li>
+                    <strong>Laravel → Supabase:</strong> Supabase requires SSL connections by default. The
+                    <code>DATABASE_URL</code> environment variable includes <code>?sslmode=require</code>, making
+                    the TLS requirement explicit and enforced at connection time — a plaintext connection attempt
+                    is rejected by the database server.
+                </li>
+                <li>
+                    <strong>Authentication tokens</strong> (Sanctum bearer tokens) are transmitted only over these
+                    encrypted channels and stored only in Expo SecureStore on the device — never in AsyncStorage,
+                    never in cookies, never logged.
+                </li>
+            </ul>
+            <p style="margin-top: 10px;">
+                TLS 1.3 specifically eliminates the handshake round-trips present in TLS 1.2, reducing connection
+                establishment latency — a performance benefit on top of the security requirement.
+            </p>
+        </div>
+
+        <!-- ─── 4. INDUSTRY ALIGNMENT ─── -->
+        <h3>4. Industry Alignment: Cloud Computing &amp; SaaS</h3>
+        <p>
+            TANDIB's distributed architecture directly leverages <strong>Cloud Computing and SaaS</strong> at
+            three of its five nodes, dramatically reducing infrastructure cost and operational burden:
+        </p>
+        <div class="grid">
+            <div class="card">
+                <h4 style="color: var(--primary);">Supabase — BaaS/SaaS (Node 3)</h4>
+                <p>
+                    Supabase is a fully managed database-as-a-service. TANDIB gets connection pooling, automated
+                    daily backups, point-in-time recovery, and geographic redundancy — all without operating a
+                    single database server. The cost scales with actual usage rather than requiring a reserved
+                    server. For a startup-stage product this is the difference between viable and not.
+                </p>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--primary);">EAS — Expo Application Services (Node 5)</h4>
+                <p>
+                    EAS replaces what would otherwise require a dedicated CI/CD server with Apple and Google
+                    developer toolchains installed. It provides on-demand build capacity: when a new version is
+                    ready, EAS compiles the iOS <code>.ipa</code> and Android <code>.apk</code>, runs code signing,
+                    and submits to both app stores from a single CLI command. The OTA update system means critical
+                    bug fixes reach all live devices within minutes of deployment, without waiting for an app store
+                    review cycle.
+                </p>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--primary);">Cloud-Hosted Laravel — IaaS (Node 2)</h4>
+                <p>
+                    The Laravel application server runs on a managed cloud platform (Railway or DigitalOcean App
+                    Platform). This provides automatic restarts on failure, environment variable management,
+                    one-command deployment from a Git push, and horizontal scaling by adding instances behind a
+                    load balancer — none of which require managing physical servers or configuring Linux from scratch.
+                </p>
+            </div>
+        </div>
+        <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #93c5fd; margin-top: 5px;">
+            <h4>Combined Effect</h4>
+            <p>
+                The three managed cloud services (Supabase, EAS, cloud host) together handle infrastructure
+                reliability, scaling, security patching, and backups. The development team's entire effort is
+                focused on application code — the food delivery business logic — rather than infrastructure
+                operations. <strong>This is the practical definition of how cloud computing supports efficiency
+                and resilience simultaneously.</strong>
+            </p>
+        </div>
+
+        <!-- ─── CLOSING ─── -->
+        <h3>Distributed Design Supporting Continuity</h3>
+        <div class="card" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 2px solid #94a3b8;">
+            <p>
+                TANDIB's distributed architecture is designed so that no single node failure brings down the
+                entire platform. The database, the application server, the push gateway, and the
+                build/distribution system are all independent nodes with no circular dependencies. A crash in any
+                one of them degrades exactly one capability while the rest continue.
+            </p>
+            <ul style="margin-top: 10px;">
+                <li>Supabase's managed replication ensures data is never lost.</li>
+                <li>EAS's OTA system ensures fixes reach users without a full release cycle.</li>
+                <li>TLS 1.3 across every inter-node channel ensures data in transit cannot be read or tampered with.</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>This is continuity by design, not by luck.</strong></p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION: TESTING STRATEGY (Weeks 13-14)     -->
+    <!-- ============================================ -->
+    <section id="testing">
+        <h2>🧪 Testing Strategy &amp; Coverage Metrics</h2>
+        <p><em>A layered quality pipeline across the Laravel backend and React Native mobile app: static analysis catches category errors before a single test runs, unit tests isolate business logic, feature tests validate the full HTTP cycle, and a coverage gate prevents regressions from reaching production.</em></p>
+
+        <!-- ─── 1. TESTING PYRAMID ─── -->
+        <h3>1. The Testing Pyramid Applied to TANDIB</h3>
+        <p>
+            The testing pyramid describes the optimal distribution of test types: many fast, cheap unit tests at the
+            base; fewer integration tests in the middle; and a small number of end-to-end tests at the top.
+            Inverting this pyramid — relying on manual or E2E tests for everything — produces a test suite that is
+            slow, brittle, and breaks whenever the UI changes. TANDIB applies the pyramid across two separate stacks:
+            the Laravel backend and the React Native mobile app.
+        </p>
+        <pre class="arch-diagram">
+                         ┌──────────────────┐
+                         │   E2E / Manual   │  ← Fewest. Real device,
+                         │   (Expo Go /     │    real server, real DB.
+                         │   Postman flows) │    Run before a release.
+                         └────────┬─────────┘
+                    ┌─────────────┴───────────────┐
+                    │     Integration / Feature    │  ← PHPUnit Feature suite.
+                    │  (tests/Feature/*.php)       │    Hits real SQLite DB.
+                    │  API contract tests          │    Covers full HTTP cycle.
+                    └─────────────┬───────────────┘
+          ┌──────────────────────┴─────────────────────────┐
+          │              Unit Tests                         │  ← Fastest, most.
+          │  (tests/Unit/*.php  |  Jest on mobile)         │    Isolated logic only.
+          │  Business rules, calculations, state logic      │    No network, no DB.
+          └─────────────────────────────────────────────────┘
+
+     ┌────────────────────────────────────────────────────────────┐
+     │           STATIC ANALYSIS (runs before all tests)         │
+     │  ESLint + TypeScript (mobile)  |  Pint + Larastan (PHP)   │
+     │  Catches bugs without executing a single line of code      │
+     └────────────────────────────────────────────────────────────┘</pre>
+
+        <!-- ─── 2. STATIC ANALYSIS ─── -->
+        <h3>2. Static Analysis — "The Tool That Checks Without Running"</h3>
+        <p>
+            Static analysis tools read source code and report problems without executing it. They are the fastest
+            feedback loop available — run in under a second, catch entire categories of bugs, and require no
+            database or server to be running.
+        </p>
+        <div class="grid">
+            <div class="card">
+                <h4 style="color: var(--primary);">Mobile: ESLint + TypeScript Compiler</h4>
+                <p>Configuration: <code>mobile/eslint.config.js</code> — uses Expo's official opinionated ruleset.</p>
+                <pre class="code-block">const { defineConfig } = require('eslint/config');
+const expoConfig = require('eslint-config-expo/flat');
+
+module.exports = defineConfig([
+  expoConfig,
+  { ignores: ['dist/*'] },
+]);</pre>
+                <table class="rr-table" style="margin-top: 12px; font-size: 0.88em;">
+                    <thead>
+                        <tr><th>Rule</th><th>What It Catches in TANDIB</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>no-unused-vars</code></td>
+                            <td>A <code>const token</code> fetched from SecureStore but never sent in the API call</td>
+                        </tr>
+                        <tr>
+                            <td><code>rules-of-hooks</code></td>
+                            <td>A <code>useState</code> call inside an <code>if</code> block in a cart screen</td>
+                        </tr>
+                        <tr>
+                            <td><code>exhaustive-deps</code></td>
+                            <td>An effect that reads <code>cartItems</code> but omits it as a dependency — runs stale</td>
+                        </tr>
+                        <tr>
+                            <td><code>tsc --noEmit</code></td>
+                            <td>Calling <code>.id</code> on an API response typed as possibly <code>null</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="code-block" style="margin-top: 12px;">cd mobile
+npx expo lint       # ESLint only
+npx tsc --noEmit    # Type check, no output files</pre>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--primary);">Backend: Laravel Pint + Larastan</h4>
+                <p><strong>Pint</strong> enforces consistent formatting. <strong>Larastan</strong> is PHPStan configured for Laravel — the PHP equivalent of TypeScript's type checker.</p>
+                <table class="rr-table" style="margin-top: 12px; font-size: 0.88em;">
+                    <thead>
+                        <tr><th>What Larastan Catches</th><th>TANDIB Example</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Method that does not exist on a model</td>
+                            <td><code>$order-&gt;invalidMethod()</code> on the Order model</td>
+                        </tr>
+                        <tr>
+                            <td>Undefined relationship name</td>
+                            <td><code>$restaurant-&gt;menus</code> when it is named <code>menuItems</code></td>
+                        </tr>
+                        <tr>
+                            <td>Wrong controller return type</td>
+                            <td>A method typed as <code>JsonResponse</code> accidentally returning <code>null</code></td>
+                        </tr>
+                        <tr>
+                            <td>Null passed where string required</td>
+                            <td>Unvalidated <code>restaurant_id</code> passed directly into a query</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pre class="code-block" style="margin-top: 12px;">cd backend
+./vendor/bin/pint --test     # check style only
+./vendor/bin/pint            # auto-fix formatting
+./vendor/bin/phpstan analyse # level 5 analysis</pre>
+                <pre class="code-block">includes:
+    - vendor/nunomaduro/larastan/extension.neon
+parameters:
+    paths:
+        - app
+    level: 5</pre>
+            </div>
+        </div>
+
+        <!-- ─── 3. UNIT TESTS ─── -->
+        <h3>3. Unit Tests — Isolated Business Logic</h3>
+        <div class="card" style="border-left: 5px solid var(--primary);">
+            <p>
+                <strong>Framework:</strong> PHPUnit (backend), Jest (mobile — to be added). Backend runs against
+                <strong>SQLite in-memory</strong> (<code>backend/phpunit.xml</code>) — no Supabase connection needed.
+                Unit tests cover logic that can be exercised in complete isolation: no HTTP, no real database, no
+                external service.
+            </p>
+            <table class="rr-table" style="margin-top: 12px;">
+                <thead>
+                    <tr><th>Logic</th><th>Why Unit-Testable</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Haversine geo-fencing</strong> (Restaurant model)</td>
+                        <td>Pure math: input two coordinates, assert returned distance or boolean — no DB needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Order::isCancellable()</strong></td>
+                        <td>Takes an order status string, returns a boolean — no DB needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Promo code discount calculation</strong></td>
+                        <td>Given a subtotal and promo object, assert the correct discount amount</td>
+                    </tr>
+                    <tr>
+                        <td><strong>isOpenNow()</strong> operating hours</td>
+                        <td>Given OperatingHours objects and a mocked current time, assert open/closed</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre class="code-block" style="margin-top: 12px;">backend/tests/Unit/
+├── HaversineDistanceTest.php
+├── OrderCancellationRulesTest.php
+├── PromoCodeCalculationTest.php
+└── OperatingHoursTest.php</pre>
+        </div>
+        <div class="card" style="border-left: 5px solid var(--accent); margin-top: 15px;">
+            <h4 style="color: #b45309;">Mobile Unit Tests (Jest) — Highest Priority Addition</h4>
+            <p>
+                The mobile app currently has no Jest setup. The single most valuable addition would be tests for
+                the <strong>Zustand cart store</strong> — it contains real logic (add item, remove item, update
+                quantity, calculate total) that does not require a device or a network connection.
+            </p>
+            <pre class="code-block">cd mobile
+npm install --save-dev jest @testing-library/react-native jest-expo
+
+mobile/__tests__/
+├── cartStore.test.ts     ← add/remove/total logic in Zustand
+└── apiHelpers.test.ts    ← URL construction, header formatting</pre>
+        </div>
+
+        <!-- ─── 4. FEATURE TESTS ─── -->
+        <h3>4. Feature Tests — API Contract Testing</h3>
+        <p>
+            <strong>Framework:</strong> PHPUnit Feature suite (<code>tests/Feature/</code>).
+            <strong>Database:</strong> SQLite in-memory. Feature tests cover the full HTTP request cycle: the test
+            sends a real HTTP request to a Laravel route, the middleware pipeline runs, the controller executes,
+            and the database is read or written. This is TANDIB's <strong>most valuable test layer</strong> because
+            it validates that the application tier behaves correctly as a whole — not just individual functions.
+        </p>
+
+        <h4>Existing Test Coverage:</h4>
+        <table class="rr-table">
+            <thead>
+                <tr><th>Test</th><th>What It Verifies</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>test_user_cannot_order_from_closed_restaurant</code></td>
+                    <td>Order controller checks <code>isOpenNow()</code> and returns 422 with the correct message before writing any row</td>
+                </tr>
+                <tr>
+                    <td><code>test_customer_cannot_cancel_order_in_preparing_status</code></td>
+                    <td><code>isCancellable()</code> returns false for preparing status; controller returns 422</td>
+                </tr>
+                <tr>
+                    <td><code>test_upload_proof_without_photo_is_rejected</code></td>
+                    <td>Form request validation rejects missing photo field with 422</td>
+                </tr>
+                <tr>
+                    <td><code>test_confirming_payment_on_card_order_is_rejected</code></td>
+                    <td>Payment confirmation endpoint rejects card orders with 422</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4 style="margin-top: 20px;">Proposed Additions:</h4>
+        <pre class="code-block">tests/Feature/
+├── AuthTest.php                  ← register, login, invalid credentials, duplicate phone
+├── RestaurantDiscoveryTest.php   ← geo-fencing: in-range vs out-of-range results
+├── PromoCodeTest.php             ← valid code, expired code, wrong minimum order
+├── RoleIsolationTest.php         ← owner cannot access other owner's data
+└── NotificationTest.php          ← order status change triggers notification dispatch</pre>
+
+        <div class="card" style="border-left: 5px solid var(--success); margin-top: 15px;">
+            <h4 style="color: var(--success);">How to Run</h4>
+            <pre class="code-block">cd backend
+php artisan test                              # all suites
+php artisan test --testsuite=Feature          # feature tests only
+php artisan test --filter=OrderValidationTest # single class</pre>
+        </div>
+
+        <!-- ─── 5. COVERAGE METRICS ─── -->
+        <h3>5. Coverage Metrics</h3>
+        <p>
+            Code coverage measures what percentage of the application's source lines, branches, and paths are
+            executed during the test suite. PHPUnit generates an HTML report using Xdebug or PCOV.
+        </p>
+        <pre class="code-block">cd backend
+XDEBUG_MODE=coverage php artisan test --coverage --min=70</pre>
+        <p>
+            The <code>--min=70</code> flag fails the test run if overall coverage drops below 70% — enforced as
+            a CI gate before any merge.
+        </p>
+
+        <table class="rr-table" style="margin-top: 15px;">
+            <thead>
+                <tr><th>Layer</th><th>Target</th><th>Rationale</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Business logic</strong> (Models, calculation methods)</td>
+                    <td><span class="tag-s">90%+</span></td>
+                    <td>Haversine, <code>isCancellable()</code>, promo math — pure logic, easy to test, high impact if wrong</td>
+                </tr>
+                <tr>
+                    <td><strong>API Controllers</strong> (Controllers/Api/)</td>
+                    <td><span class="tag-s">80%+</span></td>
+                    <td>Every endpoint covered by at least one happy-path and one negative-path feature test</td>
+                </tr>
+                <tr>
+                    <td><strong>Middleware &amp; Form Requests</strong></td>
+                    <td><span class="tag-r">70%+</span></td>
+                    <td>Auth middleware and validation rules are tested indirectly through feature tests</td>
+                </tr>
+                <tr>
+                    <td><strong>Filament Resources</strong></td>
+                    <td><span style="background:#f1f5f9; color:var(--secondary); padding:3px 8px; border-radius:4px; font-weight:bold; font-size:0.85em;">Not targeted</span></td>
+                    <td>Admin UI resources are configuration-driven; testing Filament internals is not productive</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile</strong> (Zustand store)</td>
+                    <td><span class="tag-s">80%+</span></td>
+                    <td>Cart logic is pure and high-value; UI screens are lower priority</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="card" style="border-left: 5px solid var(--accent); margin-top: 20px;">
+            <h4 style="color: #b45309;">What Coverage Does NOT Measure</h4>
+            <p>
+                Coverage reports that a line was <em>executed</em> — not that the assertion was <em>correct</em>.
+                A test that calls <code>placeOrder()</code> and asserts only <code>assertStatus(200)</code> gives
+                full line coverage but does not verify the order total, the payment record, or the notification
+                dispatch. <strong>Coverage is a floor, not a ceiling.</strong> TANDIB's tests assert specific JSON
+                paths, specific status codes, and specific database states — not just that the endpoint responded.
+            </p>
+        </div>
+
+        <!-- ─── 6. QUALITY PIPELINE ─── -->
+        <h3>6. Running the Full Quality Pipeline</h3>
+        <p>
+            The complete quality check sequence runs in this order before every merge. Each step catches a
+            distinct category of defect that the previous step cannot:
+        </p>
+        <div class="grid">
+            <div class="card">
+                <h4 style="color: var(--primary);">Backend Pipeline</h4>
+                <pre class="code-block">cd backend
+./vendor/bin/pint --test           # 1. Code style
+./vendor/bin/phpstan analyse       # 2. Static analysis
+php artisan test --coverage --min=70  # 3. Tests + gate</pre>
+            </div>
+            <div class="card">
+                <h4 style="color: var(--primary);">Mobile Pipeline</h4>
+                <pre class="code-block">cd mobile
+npx tsc --noEmit                   # 1. Type check
+npx expo lint                      # 2. ESLint
+npx jest --coverage                # 3. Unit tests</pre>
+            </div>
+        </div>
+        <div class="card" style="background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%); border: 2px solid #93c5fd; margin-top: 5px;">
+            <p>
+                This pipeline catches four distinct categories of defect before code reaches production:
+                <strong>formatting violations</strong> (Pint/ESLint), <strong>type errors and undefined
+                references</strong> (Larastan/TypeScript), <strong>behavioral regressions</strong>
+                (PHPUnit/Jest), and <strong>coverage regressions</strong> (coverage gate).
+                Each category requires a different tool — no single tool catches all four.
+            </p>
         </div>
     </section>
 
